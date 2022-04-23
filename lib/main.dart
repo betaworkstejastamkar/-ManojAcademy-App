@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:manojacademy/screens/register.dart';
+import 'package:manojacademy/screens/home.dart';
+// import 'package:manojacademy/screens/login.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -10,9 +11,6 @@ void main() {
         primaryColor: const Color.fromRGBO(0, 129, 100, 1),
         // primaryColorDark: const Color.fromRGBO(0, 129, 100, 1),
 
-        // Define the default font family.
-        fontFamily: 'Georgia',
-
         // Define the default `TextTheme`. Use this to specify the default
         // text styling for headlines, titles, bodies of text, and more.
         textTheme: const TextTheme(
@@ -21,5 +19,5 @@ void main() {
           bodyText2: TextStyle(color: Color.fromRGBO(0, 129, 100, 1)),
         ),
       ),
-      home: const Register()));
+      home: const Home()));
 }

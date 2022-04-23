@@ -114,13 +114,20 @@ class _RegisterState extends State<Register> {
                             height: 20,
                           ),
                           ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  primary: Theme.of(context).primaryColor,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 80, vertical: 15),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15.0),
-                                  )),
+                            style: ElevatedButton.styleFrom(
+                                primary: Theme.of(context).primaryColor,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 80, vertical: 15),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                )),
+                            onPressed: () {},
+                            child: const Text(
+                              'Create Account',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ),
+                          TextButton(
                               onPressed: () {
                                 Navigator.push(
                                   context,
@@ -128,10 +135,8 @@ class _RegisterState extends State<Register> {
                                       builder: (context) => const Login()),
                                 );
                               },
-                              child: const Text(
-                                'Create Account',
-                                style: TextStyle(fontSize: 20),
-                              ))
+                              child: Text('Already have Account?Login..',
+                                  style: Theme.of(context).textTheme.bodyText2))
                         ],
                       ),
                     )),
