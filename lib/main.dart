@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:manojacademy/screens/home.dart';
+// import 'package:manojacademy/screens/home.dart';
+import 'package:manojacademy/screens/navbar.dart';
 // import 'package:manojacademy/screens/login.dart';
 
 void main() {
@@ -19,5 +20,5 @@ void main() {
           bodyText2: TextStyle(color: Color.fromRGBO(0, 129, 100, 1)),
         ),
       ),
-      home: const Home()));
+      home: const BottomNavBar()));
 }
