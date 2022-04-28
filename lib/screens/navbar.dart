@@ -51,40 +51,37 @@ class _BottomNavBarState extends State<BottomNavBar> {
       backgroundColor: Colors.white,
       body: screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        type: BottomNavigationBarType.fixed,
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              size: 30,
-            ),
+            icon: _selectedIndex == 0
+                ? (Image.asset('navbaricons/selected/home.png'))
+                : (Image.asset('navbaricons/unselected/home.png')),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-              size: 30,
-            ),
+            icon: _selectedIndex == 1
+                ? (Image.asset('navbaricons/selected/search.png'))
+                : (Image.asset('navbaricons/unselected/search.png')),
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.video_camera_front_rounded,
-              size: 30,
-            ),
+            icon: _selectedIndex == 2
+                ? (Image.asset('navbaricons/selected/live.png'))
+                : (Image.asset('navbaricons/unselected/live.png')),
             label: 'Live',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.border_all_rounded,
-              size: 30,
-            ),
+            icon: _selectedIndex == 3
+                ? (Image.asset('navbaricons/selected/test.png'))
+                : (Image.asset('navbaricons/unselected/test.png')),
             label: 'Test',
           ),
         ],
         selectedFontSize: 20,
         unselectedFontSize: 20,
-        selectedLabelStyle: const TextStyle(fontSize: 0),
-        unselectedLabelStyle: const TextStyle(fontSize: 0),
+        selectedLabelStyle: const TextStyle(fontSize: 12),
+        unselectedLabelStyle: const TextStyle(fontSize: 12),
         currentIndex: _selectedIndex,
         selectedItemColor: Theme.of(context).primaryColor,
         unselectedItemColor: const Color.fromRGBO(165, 153, 153, 1),

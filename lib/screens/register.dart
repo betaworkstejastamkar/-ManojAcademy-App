@@ -10,8 +10,20 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  String dropdownvalue = 'class 4';
+  var items = [
+    'class 4',
+    'class 5',
+    'class 6',
+    'class 7',
+    'class 8',
+    'class 9',
+  ];
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -39,8 +51,8 @@ class _RegisterState extends State<Register> {
                   ],
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: width - 380, vertical: 10),
                   child: Column(
                     children: [
                       const TextField(
@@ -69,15 +81,25 @@ class _RegisterState extends State<Register> {
                       const SizedBox(
                         height: 14,
                       ),
-                      const TextField(
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color.fromRGBO(229, 229, 229, 1)),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
-                            labelText: 'Course',
-                            hintText: 'Enter Your Course'),
+                      SizedBox(
+                        width: width - 130,
+                        child: DropdownButton(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          value: dropdownvalue,
+                          icon: const Icon(Icons.keyboard_arrow_down),
+                          items: items.map((String items) {
+                            return DropdownMenuItem(
+                              value: items,
+                              child: Text(items),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              dropdownvalue = newValue!;
+                            });
+                          },
+                        ),
                       ),
                       const SizedBox(
                         height: 14,
@@ -111,8 +133,8 @@ class _RegisterState extends State<Register> {
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             primary: Theme.of(context).primaryColor,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 80, vertical: 15),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: width - 350, vertical: 15),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15.0),
                             )),

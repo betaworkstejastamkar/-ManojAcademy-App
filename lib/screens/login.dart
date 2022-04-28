@@ -12,6 +12,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -39,8 +41,8 @@ class _LoginState extends State<Login> {
                   ],
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: width - 380, vertical: 10),
                   child: Expanded(
                     child: Column(
                       children: [
