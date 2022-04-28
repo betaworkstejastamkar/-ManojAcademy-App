@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:manojacademy/screens/home.dart';
-import 'package:manojacademy/screens/navbar.dart';
-// import 'package:manojacademy/screens/login.dart';
+import 'package:manojacademy/screens/register.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -20,5 +18,5 @@ void main() {
           bodyText2: TextStyle(color: Color.fromRGBO(0, 129, 100, 1)),
         ),
       ),
-      home: const BottomNavBar()));
+      home: const Register()));
 }

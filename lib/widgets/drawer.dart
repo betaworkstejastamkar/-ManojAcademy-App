@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:manojacademy/screens/aboutuspage.dart';
 import 'package:manojacademy/screens/downloadcertificatepage.dart';
 import 'package:manojacademy/screens/livelecturespage.dart';
+import 'package:manojacademy/screens/login.dart';
 import 'package:manojacademy/screens/mylearningpage.dart';
 import 'package:manojacademy/screens/profilepage.dart';
 import 'package:manojacademy/screens/subscriptionplanpage.dart';
@@ -113,6 +114,8 @@ class SideBar extends StatelessWidget {
           ListTile(
             onTap: () {
               Navigator.of(context).pop();
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Login()));
             },
             leading: SizedBox(
                 width: 20, height: 20, child: Image.asset('icons/log-out.png')),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:manojacademy/screens/home.dart';
+import 'package:manojacademy/screens/navbar.dart';
 import 'package:manojacademy/screens/register.dart';
 
 class Login extends StatefulWidget {
@@ -95,7 +95,7 @@ class _LoginState extends State<Login> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Home()),
+                                  builder: (context) => const BottomNavBar()),
                             );
                           },
                           child: const Text(
