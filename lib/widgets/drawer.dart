@@ -20,6 +20,7 @@ class SideBar extends StatelessWidget {
         'https://media.istockphoto.com/photos/photo-of-school-boy-wear-yellow-tshirt-backpack-in-background-stock-picture-id1372481295?k=20&m=1372481295&s=612x612&w=0&h=CNl9rfw4D5q19ONsAJ88D3gz4-WHdvYAL0KpXfz0Cqo=';
 
     return Drawer(
+      backgroundColor: Colors.white,
       child: ListView(
         children: [
           buildHeader(

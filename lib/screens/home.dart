@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_indicator/carousel_indicator.dart';
+import 'package:manojacademy/widgets/popularcards.dart';
 import 'package:manojacademy/widgets/subjectcards.dart';
 import 'package:manojacademy/widgets/videocards.dart';
 
@@ -143,6 +144,42 @@ class _HomeState extends State<Home> {
                         },
                       ),
                     ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(20, 20, 0, 10),
+                        child: Text(
+                          "Popular Courses",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: SizedBox(
+                          height: 400,
+                          child: ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            itemCount: popularcardData.length,
+                            itemBuilder: (context, index) {
+                              return poplurcards(
+                                  mintes: "${popularcardData[index]['mintes']}",
+                                  imageUrl:
+                                      "${popularcardData[index]['image']}",
+                                  name: "${popularcardData[index]['name']}",
+                                  subname:
+                                      "${popularcardData[index]['subname']}",
+                                  hour: "${popularcardData[index]['hours']}");
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
