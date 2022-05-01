@@ -58,14 +58,24 @@ class _ProfilePageState extends State<ProfilePage> {
                       ],
                     ),
                     Column(
-                      children: const [
-                        CircleAvatar(
-                            radius: 60,
-                            backgroundImage: NetworkImage(urlImage)),
-                        SizedBox(
+                      children: [
+                        Container(
+                          child: const CircleAvatar(
+                              radius: 60,
+                              backgroundImage: NetworkImage(urlImage)),
+                          // width: 60,
+                          // height: 32.0,
+                          padding: const EdgeInsets.all(2.0), // borde width
+                          decoration: BoxDecoration(
+                            color:
+                                Theme.of(context).primaryColor, // border color
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text(
+                        const Text(
                           name,
                           style: TextStyle(
                               fontSize: 18,

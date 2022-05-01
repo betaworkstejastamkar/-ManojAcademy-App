@@ -47,7 +47,10 @@ class SideBar extends StatelessWidget {
               height: 20,
               child: Image.asset('icons/book.png'),
             ),
-            title: const Text('My learning'),
+            title: const Text(
+              'My learning',
+              style: TextStyle(color: Colors.black),
+            ),
           ),
           ListTile(
             onTap: () {
@@ -57,7 +60,10 @@ class SideBar extends StatelessWidget {
                 width: 20,
                 height: 20,
                 child: Image.asset('icons/bar-chart-2.png')),
-            title: const Text('Test Result'),
+            title: const Text(
+              'Test Result',
+              style: TextStyle(color: Colors.black),
+            ),
           ),
           ListTile(
             onTap: () {
@@ -65,7 +71,10 @@ class SideBar extends StatelessWidget {
             },
             leading: SizedBox(
                 width: 20, height: 20, child: Image.asset('icons/link.png')),
-            title: const Text('Live Lectures'),
+            title: const Text(
+              'Live Lectures',
+              style: TextStyle(color: Colors.black),
+            ),
           ),
           ListTile(
             onTap: () {
@@ -73,7 +82,10 @@ class SideBar extends StatelessWidget {
             },
             leading: SizedBox(
                 width: 20, height: 20, child: Image.asset('icons/Wallet2.png')),
-            title: const Text('Subscription Plan'),
+            title: const Text(
+              'Subscription Plan',
+              style: TextStyle(color: Colors.black),
+            ),
           ),
           ListTile(
             onTap: () {
@@ -83,7 +95,10 @@ class SideBar extends StatelessWidget {
                 width: 20,
                 height: 20,
                 child: Image.asset('icons/download.png')),
-            title: const Text('Download Certificate'),
+            title: const Text(
+              'Download Certificate',
+              style: TextStyle(color: Colors.black),
+            ),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 30, vertical: 0),
@@ -100,7 +115,10 @@ class SideBar extends StatelessWidget {
                 width: 20,
                 height: 20,
                 child: Image.asset('icons/clipboard.png')),
-            title: const Text('About Us'),
+            title: const Text(
+              'About Us',
+              style: TextStyle(color: Colors.black),
+            ),
           ),
           ListTile(
             onTap: () {
@@ -110,7 +128,10 @@ class SideBar extends StatelessWidget {
                 width: 20,
                 height: 20,
                 child: Image.asset('icons/paperclip.png')),
-            title: const Text('Terms and Conditions'),
+            title: const Text(
+              'Terms and Conditions',
+              style: TextStyle(color: Colors.black),
+            ),
           ),
           ListTile(
             onTap: () {
@@ -120,7 +141,10 @@ class SideBar extends StatelessWidget {
             },
             leading: SizedBox(
                 width: 20, height: 20, child: Image.asset('icons/log-out.png')),
-            title: const Text('Logout'),
+            title: const Text(
+              'Logout',
+              style: TextStyle(color: Colors.black),
+            ),
           ),
         ],
       ),

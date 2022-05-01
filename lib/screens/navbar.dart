@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:manojacademy/screens/home.dart';
-import 'package:manojacademy/screens/livelecturespage.dart';
+import 'package:manojacademy/screens/livepage.dart';
 import 'package:manojacademy/screens/searchpage.dart';
 import 'package:manojacademy/screens/testpage.dart';
 import 'package:manojacademy/widgets/drawer.dart';
@@ -18,7 +18,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   final screens = [
     const Home(),
     const SearchPage(),
-    const LivelecturesPage(),
+    const LivePage(),
     const TestPage(),
   ];
 
@@ -42,10 +42,15 @@ class _BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [Image.asset('icons/bell.png')],
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         title: const Text('Class 6'),
         centerTitle: true,
+        // leading: IconButton(
+        //   icon: Image.asset('icons/align-left.png'),
+        //   onPressed: () => Scaffold.of(context).openDrawer(),
+        // ),
       ),
       drawer: const SideBar(),
       backgroundColor: Colors.white,

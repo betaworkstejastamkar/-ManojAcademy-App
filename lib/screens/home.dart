@@ -162,7 +162,7 @@ class _HomeState extends State<Home> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: SizedBox(
-                          height: 400,
+                          height: 500,
                           child: ListView.builder(
                             scrollDirection: Axis.vertical,
                             itemCount: popularcardData.length,

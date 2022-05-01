@@ -22,6 +22,7 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+
     // double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
@@ -156,7 +157,7 @@ class _RegisterState extends State<Register> {
                               MaterialPageRoute(
                                   builder: (context) => const Login()));
                         },
-                        child: Text('Already have Account?Login..',
+                        child: Text('Already have Account? Login..',
                             style: Theme.of(context).textTheme.bodyText2),
                       )
                     ],
