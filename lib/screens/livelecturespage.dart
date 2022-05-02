@@ -29,45 +29,53 @@ class LivelecturesPage extends StatefulWidget {
 class _LivelecturesPageState extends State<LivelecturesPage> {
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 100,
+        leading: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Image.asset('icons/arrow-left.png'),
+            style: ButtonStyle(
+                elevation: MaterialStateProperty.all(0),
+                backgroundColor: MaterialStateProperty.all(Colors.white)),
+          ),
+        ),
         elevation: 1,
-        title: Row(
-          children: [
-            Image.asset('icons/link.png'),
-            const SizedBox(
-              width: 5,
-            ),
-            const Text('Live lectures'),
-          ],
+        title: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+          child: Row(
+            children: [
+              Image.asset('icons/link.png'),
+              const SizedBox(
+                width: 5,
+              ),
+              const Text('Live lectures'),
+            ],
+          ),
         ),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         // centerTitle: true,
       ),
       backgroundColor: Colors.white,
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: SizedBox(
-              height: height,
-              child: ListView.builder(
-                itemCount: livelectrueData.length,
-                itemBuilder: (context, index) {
-                  return liveLectureCard(
-                    date: "${livelectrueData[index]['date']}",
-                    time: "${livelectrueData[index]['time']}",
-                    name: "${livelectrueData[index]['name']}",
-                    link: "${livelectrueData[index]['link']}",
-                    icon: "${livelectrueData[index]['icon']}",
-                  );
-                },
-              ),
-            ),
-          )
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: ListView.builder(
+          itemCount: livelectrueData.length,
+          itemBuilder: (context, index) {
+            return liveLectureCard(
+              date: "${livelectrueData[index]['date']}",
+              time: "${livelectrueData[index]['time']}",
+              name: "${livelectrueData[index]['name']}",
+              link: "${livelectrueData[index]['link']}",
+              icon: "${livelectrueData[index]['icon']}",
+            );
+          },
+        ),
       ),
     );
   }

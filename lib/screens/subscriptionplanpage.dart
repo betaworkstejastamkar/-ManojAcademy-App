@@ -32,16 +32,37 @@ class _SubPlanPageState extends State<SubPlanPage> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        actions: [Image.asset('icons/logo.png')],
+        toolbarHeight: 100,
+        leading: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Image.asset('icons/arrow-left.png'),
+            style: ButtonStyle(
+                elevation: MaterialStateProperty.all(0),
+                backgroundColor: MaterialStateProperty.all(Colors.white)),
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+            child: Image.asset('icons/logo.png'),
+          )
+        ],
         elevation: 1,
-        title: Row(
-          children: [
-            Image.asset('icons/Wallet2.png'),
-            const SizedBox(
-              width: 5,
-            ),
-            const Text('Subscription Plan'),
-          ],
+        title: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+          child: Row(
+            children: [
+              Image.asset('icons/Wallet2.png'),
+              const SizedBox(
+                width: 5,
+              ),
+              const Text('Subscription Plan'),
+            ],
+          ),
         ),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,

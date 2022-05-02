@@ -6,21 +6,24 @@ List lectureData = [
     'name': 'Maths',
     'chapter': 16,
     'totalvideo': 100,
-    'status': 'On chapter 2'
+    'status': 'On chapter 2',
+    'completed': 20,
   },
   {
     'image': 'assets/greenbox.png',
     'name': 'English',
     'chapter': 12,
     'totalvideo': 90,
-    'status': 'On chapter 2'
+    'status': 'On chapter 2',
+    'completed': 0,
   },
   {
     'image': 'assets/greybox.png',
     'name': 'History',
     'chapter': 14,
     'totalvideo': 120,
-    'status': 'On chapter 2'
+    'status': 'On chapter 2',
+    'completed': 50,
   },
 ];
 
@@ -38,15 +41,31 @@ class _MylearningPageState extends State<MylearningPage> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 100,
+        leading: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Image.asset('icons/arrow-left.png'),
+            style: ButtonStyle(
+                elevation: MaterialStateProperty.all(0),
+                backgroundColor: MaterialStateProperty.all(Colors.white)),
+          ),
+        ),
         elevation: 1,
-        title: Row(
-          children: [
-            Image.asset('icons/book.png'),
-            const SizedBox(
-              width: 5,
-            ),
-            const Text('My Learning'),
-          ],
+        title: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+          child: Row(
+            children: [
+              Image.asset('icons/book.png'),
+              const SizedBox(
+                width: 5,
+              ),
+              const Text('My Learning'),
+            ],
+          ),
         ),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -67,6 +86,7 @@ class _MylearningPageState extends State<MylearningPage> {
                     chapter: "${lectureData[index]['chapter']}",
                     video: "${lectureData[index]['totalvideo']}",
                     status: "${lectureData[index]['status']}",
+                    precent: lectureData[index]['completed'],
                     width: width,
                     height: height);
               },
@@ -78,7 +98,9 @@ class _MylearningPageState extends State<MylearningPage> {
   }
 }
 
-Widget lectureCards({image, name, chapter, video, status, width, height}) {
+Widget lectureCards(
+    {image, name, chapter, video, status, width, height, precent}) {
+  var _precent = precent / 100;
   return Card(
     elevation: 4,
     shape: RoundedRectangleBorder(
@@ -186,10 +208,11 @@ Widget lectureCards({image, name, chapter, video, status, width, height}) {
               ),
               SizedBox(
                 width: width - 200,
-                child: const LinearProgressIndicator(
-                  color: Color.fromRGBO(196, 196, 196, 1),
-                  value: 10,
-                  semanticsLabel: 'Linear progress indicator',
+                child: LinearProgressIndicator(
+                  backgroundColor: const Color.fromRGBO(196, 196, 196, 1),
+                  color: const Color.fromRGBO(0, 129, 100, 1),
+                  value: _precent,
+                  // semanticsLabel: 'Linear progress indicator',
                 ),
               ),
               Row(

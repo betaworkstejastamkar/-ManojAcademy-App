@@ -53,6 +53,7 @@ class _SearchPageState extends State<SearchPage> {
                     child: SizedBox(
                       height: height - 100,
                       child: GridView.builder(
+                        shrinkWrap: true,
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                                 mainAxisSpacing: 3,
