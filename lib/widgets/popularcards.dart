@@ -36,62 +36,64 @@ Widget poplurcards(
     required String subname,
     required String hour,
     required String mintes}) {
-  return Card(
-    child: (Padding(
-      padding: const EdgeInsets.all(5),
-      child: Row(
-        children: [
-          SizedBox(
-              width: 95,
-              height: 95,
-              child: Image.asset(imageUrl, fit: BoxFit.fill)),
-          const SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 250,
-                child: Text(
-                  name,
-                  style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontFamily: 'Heebo',
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Text(
-                subname,
-                style: const TextStyle(
-                  color: Color.fromRGBO(165, 153, 153, 1),
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Icon(
-                    Icons.alarm,
-                    color: Color.fromRGBO(165, 153, 153, 1),
+  return Builder(builder: (context) {
+    return Card(
+      child: (Padding(
+        padding: const EdgeInsets.all(5),
+        child: Row(
+          children: [
+            SizedBox(
+                width: 95,
+                height: 95,
+                child: Image.asset(imageUrl, fit: BoxFit.fill)),
+            const SizedBox(width: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width - 150,
+                  child: Text(
+                    name,
+                    style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontFamily: 'Heebo',
+                        fontWeight: FontWeight.bold),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(3.0),
-                    child: Text(
-                      '${hour}h ${mintes}m',
-                      style: const TextStyle(
-                        color: Color.fromRGBO(165, 153, 153, 1),
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
+                ),
+                Text(
+                  subname,
+                  style: const TextStyle(
+                    color: Color.fromRGBO(165, 153, 153, 1),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Icon(
+                      Icons.alarm,
+                      color: Color.fromRGBO(165, 153, 153, 1),
                     ),
-                  )
-                ],
-              )
-            ],
-          ),
-        ],
-      ),
-    )),
-  );
+                    Padding(
+                      padding: const EdgeInsets.all(3.0),
+                      child: Text(
+                        '${hour}h ${mintes}m',
+                        style: const TextStyle(
+                          color: Color.fromRGBO(165, 153, 153, 1),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ],
+        ),
+      )),
+    );
+  });
 }

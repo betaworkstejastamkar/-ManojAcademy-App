@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 List testReusltData = [
   {
@@ -7,15 +8,15 @@ List testReusltData = [
       {
         'chapter': 2,
         'Question': 50,
-        'R_Answer': '+33',
-        'W_Answer': -17,
+        'R_Answer': 33,
+        'W_Answer': 17,
         'completed': 45,
       },
       {
         'chapter': 2,
         'Question': 50,
-        'R_Answer': '+33',
-        'W_Answer': -17,
+        'R_Answer': 33,
+        'W_Answer': 17,
         'completed': 60,
       }
     ],
@@ -26,22 +27,22 @@ List testReusltData = [
       {
         'chapter': 2,
         'Question': 50,
-        'R_Answer': '+33',
-        'W_Answer': -17,
+        'R_Answer': 33,
+        'W_Answer': 17,
         'completed': 45,
       },
       {
         'chapter': 2,
         'Question': 50,
-        'R_Answer': '+33',
-        'W_Answer': -17,
+        'R_Answer': 33,
+        'W_Answer': 17,
         'completed': 60,
       },
       {
         'chapter': 2,
         'Question': 50,
-        'R_Answer': '+33',
-        'W_Answer': -17,
+        'R_Answer': 33,
+        'W_Answer': 17,
         'completed': 80,
       }
     ]
@@ -52,15 +53,15 @@ List testReusltData = [
       {
         'chapter': 2,
         'Question': 50,
-        'R_Answer': '+33',
-        'W_Answer': -17,
+        'R_Answer': 33,
+        'W_Answer': 17,
         'completed': 90,
       },
       {
         'chapter': 2,
         'Question': 50,
-        'R_Answer': '+33',
-        'W_Answer': -17,
+        'R_Answer': 33,
+        'W_Answer': 17,
         'completed': 25,
       }
     ]
@@ -87,7 +88,7 @@ class _TestResultPageState extends State<TestResultPage> {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Image.asset('icons/arrow-left.png'),
+            child: SvgPicture.asset('icons/arrow-left.svg'),
             style: ButtonStyle(
                 elevation: MaterialStateProperty.all(0),
                 backgroundColor: MaterialStateProperty.all(Colors.white)),
@@ -98,7 +99,7 @@ class _TestResultPageState extends State<TestResultPage> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset('icons/bar-chart-2.png'),
+              SvgPicture.asset('icons/bar-chart.svg'),
               const SizedBox(
                 width: 5,
               ),
@@ -167,6 +168,8 @@ Widget subjectTitle({name, required List resultdata}) {
 
 Widget testResultView({chapter, question, rigthanswers, wrongansers, precent}) {
   var _precent = precent / 100;
+  precent = (rigthanswers / question) * 100;
+
   return Card(
     elevation: 0,
     shape: RoundedRectangleBorder(

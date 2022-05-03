@@ -3,7 +3,6 @@ import 'package:manojacademy/screens/home.dart';
 import 'package:manojacademy/screens/livepage.dart';
 import 'package:manojacademy/screens/searchpage.dart';
 import 'package:manojacademy/screens/testpage.dart';
-import 'package:manojacademy/widgets/drawer.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -41,18 +40,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [Image.asset('icons/bell.png')],
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        title: const Text('Class 6'),
-        centerTitle: true,
-        // leading: IconButton(
-        //   icon: Image.asset('icons/align-left.png'),
-        //   onPressed: () => Scaffold.of(context).openDrawer(),
-        // ),
-      ),
-      drawer: const SideBar(),
       backgroundColor: Colors.white,
       body: screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(

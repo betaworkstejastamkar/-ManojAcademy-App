@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 List liveCardsData = [
   {
@@ -32,28 +33,34 @@ class _LivePageState extends State<LivePage> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: SizedBox(
-              height: height,
-              child: ListView.builder(
-                  itemCount: liveCardsData.length,
-                  itemBuilder: (context, index) {
-                    return liveCards(
-                        title: '${liveCardsData[index]['title']}',
-                        subject: '${liveCardsData[index]['subject']}',
-                        date: '${liveCardsData[index]['date']}',
-                        startTime: '${liveCardsData[index]['startTime']}',
-                        endTime: '${liveCardsData[index]['endTime']}',
-                        lecturer: '${liveCardsData[index]['lecturer']}',
-                        width: width,
-                        height: height);
-                  }),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        title: Row(
+          children: [
+            SvgPicture.asset('icons/livelecturereddot.svg'),
+            const SizedBox(
+              width: 10,
             ),
-          ),
-        ],
+            const Text('Live Sessions')
+          ],
+        ),
+        leading: const Text(''),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: ListView.builder(
+            itemCount: liveCardsData.length,
+            itemBuilder: (context, index) {
+              return liveCards(
+                  title: '${liveCardsData[index]['title']}',
+                  subject: '${liveCardsData[index]['subject']}',
+                  date: '${liveCardsData[index]['date']}',
+                  startTime: '${liveCardsData[index]['startTime']}',
+                  endTime: '${liveCardsData[index]['endTime']}',
+                  lecturer: '${liveCardsData[index]['lecturer']}',
+                  width: width,
+                  height: height);
+            }),
       ),
     );
   }
@@ -73,6 +80,7 @@ Widget liveCards(
             style: const TextStyle(
                 color: Colors.black, fontSize: 16, fontWeight: FontWeight.w400),
           ),
+          const SizedBox(height: 10),
           Card(
             elevation: 0,
             color: const Color.fromRGBO(0, 0, 0, 0.1),
@@ -87,6 +95,7 @@ Widget liveCards(
               ),
             ),
           ),
+          const SizedBox(height: 10),
           Row(
             children: [
               const Text(
@@ -103,6 +112,7 @@ Widget liveCards(
               ),
             ],
           ),
+          const SizedBox(height: 10),
           Row(
             children: [
               const Text(
@@ -119,6 +129,13 @@ Widget liveCards(
               ),
             ],
           ),
+          const SizedBox(height: 10),
+          Text(
+            lecturer,
+            style: const TextStyle(
+                fontSize: 12, fontWeight: FontWeight.w400, color: Colors.black),
+          ),
+          const SizedBox(height: 10),
           SizedBox(
             width: width - 50,
             child: ElevatedButton(

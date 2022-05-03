@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 List lectureData = [
   {
@@ -48,7 +49,7 @@ class _MylearningPageState extends State<MylearningPage> {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Image.asset('icons/arrow-left.png'),
+            child: SvgPicture.asset('icons/arrow-left.svg'),
             style: ButtonStyle(
                 elevation: MaterialStateProperty.all(0),
                 backgroundColor: MaterialStateProperty.all(Colors.white)),
@@ -59,7 +60,7 @@ class _MylearningPageState extends State<MylearningPage> {
           padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
           child: Row(
             children: [
-              Image.asset('icons/book.png'),
+              SvgPicture.asset('icons/book.svg'),
               const SizedBox(
                 width: 5,
               ),
@@ -148,7 +149,7 @@ Widget lectureCards(
                     children: [
                       Row(
                         children: [
-                          Image.asset('icons/points.png'),
+                          SvgPicture.asset('icons/points.svg'),
                           Text(
                             ' $chapter Chapters',
                             style: const TextStyle(color: Colors.black),
@@ -157,7 +158,7 @@ Widget lectureCards(
                       ),
                       Row(
                         children: [
-                          Image.asset('icons/points.png'),
+                          SvgPicture.asset('icons/points.svg'),
                           Text(
                             ' $video total video',
                             style: const TextStyle(color: Colors.black),
@@ -166,7 +167,7 @@ Widget lectureCards(
                       ),
                       Row(
                         children: [
-                          Image.asset('icons/points.png'),
+                          SvgPicture.asset('icons/points.svg'),
                           const Text(
                             ' Live Sessions',
                             style: TextStyle(color: Colors.black),
@@ -183,7 +184,7 @@ Widget lectureCards(
                     children: [
                       Row(
                         children: [
-                          Image.asset('icons/points.png'),
+                          SvgPicture.asset('icons/points.svg'),
                           const Text(
                             ' Test Series ',
                             style: TextStyle(color: Colors.black),
@@ -192,7 +193,7 @@ Widget lectureCards(
                       ),
                       Row(
                         children: [
-                          Image.asset('icons/points.png'),
+                          SvgPicture.asset('icons/points.svg'),
                           const Text(
                             ' Certificate',
                             style: TextStyle(color: Colors.black),
@@ -206,13 +207,20 @@ Widget lectureCards(
               const SizedBox(
                 height: 20,
               ),
-              SizedBox(
-                width: width - 200,
-                child: LinearProgressIndicator(
-                  backgroundColor: const Color.fromRGBO(196, 196, 196, 1),
-                  color: const Color.fromRGBO(0, 129, 100, 1),
-                  value: _precent,
-                  // semanticsLabel: 'Linear progress indicator',
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                child: SizedBox(
+                  width: width - 200,
+                  height: 7,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: LinearProgressIndicator(
+                      backgroundColor: const Color.fromRGBO(196, 196, 196, 1),
+                      color: const Color.fromRGBO(0, 129, 100, 1),
+                      value: _precent,
+                      // semanticsLabel: 'Linear progress indicator',
+                    ),
+                  ),
                 ),
               ),
               Row(

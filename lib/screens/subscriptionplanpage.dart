@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 List plandata = [
   {
@@ -39,7 +40,7 @@ class _SubPlanPageState extends State<SubPlanPage> {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Image.asset('icons/arrow-left.png'),
+            child: SvgPicture.asset('icons/arrow-left.svg'),
             style: ButtonStyle(
                 elevation: MaterialStateProperty.all(0),
                 backgroundColor: MaterialStateProperty.all(Colors.white)),
@@ -48,7 +49,7 @@ class _SubPlanPageState extends State<SubPlanPage> {
         actions: [
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-            child: Image.asset('icons/logo.png'),
+            child: SvgPicture.asset('icons/logo.svg'),
           )
         ],
         elevation: 1,
@@ -56,7 +57,7 @@ class _SubPlanPageState extends State<SubPlanPage> {
           padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
           child: Row(
             children: [
-              Image.asset('icons/Wallet2.png'),
+              SvgPicture.asset('icons/Wallet.svg'),
               const SizedBox(
                 width: 5,
               ),
@@ -98,7 +99,7 @@ class _SubPlanPageState extends State<SubPlanPage> {
                         padding: const EdgeInsets.all(5),
                         child: Row(
                           children: [
-                            Image.asset('icons/check-circle.png'),
+                            SvgPicture.asset('icons/check-circle.svg'),
                             const Text(
                               ' Watch videos anytime',
                               style: TextStyle(
@@ -113,7 +114,7 @@ class _SubPlanPageState extends State<SubPlanPage> {
                         padding: const EdgeInsets.all(5.0),
                         child: Row(
                           children: [
-                            Image.asset('icons/check-circle.png'),
+                            SvgPicture.asset('icons/check-circle.svg'),
                             const Text(
                               ' Test Series',
                               style: TextStyle(
@@ -136,7 +137,7 @@ class _SubPlanPageState extends State<SubPlanPage> {
                         padding: const EdgeInsets.all(5.0),
                         child: Row(
                           children: [
-                            Image.asset('icons/check-circle.png'),
+                            SvgPicture.asset('icons/check-circle.svg'),
                             const Text(
                               ' Live Sessions',
                               style: TextStyle(
@@ -151,7 +152,7 @@ class _SubPlanPageState extends State<SubPlanPage> {
                         padding: const EdgeInsets.all(5.0),
                         child: Row(
                           children: [
-                            Image.asset('icons/check-circle.png'),
+                            SvgPicture.asset('icons/check-circle.svg'),
                             const Text(
                               ' Certificate',
                               style: TextStyle(
@@ -201,7 +202,7 @@ Widget planCards({months, amount}) {
         padding: const EdgeInsets.all(25.0),
         child: Row(
           children: [
-            Image.asset('icons/points.png'),
+            SvgPicture.asset('icons/points.svg'),
             const SizedBox(
               width: 10,
             ),
@@ -220,7 +221,7 @@ Widget planCards({months, amount}) {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            Image.asset('icons/arrow-right.png')
+            SvgPicture.asset('icons/arrow-right.svg')
           ],
         ),
       ),

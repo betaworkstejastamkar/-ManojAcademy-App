@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+// import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 
 List chapters = [
   {'name': 'A Tale of Two Birds', 'question': 24, 'completed': 66},
@@ -9,15 +11,29 @@ List chapters = [
 
 // ignore: must_be_immutable
 class SubjectPage extends StatefulWidget {
-  late String name, image;
-  SubjectPage({Key? key, required this.name, required this.image})
-      : super(key: key);
+  late String name, image, strengthMeter;
+  SubjectPage({
+    Key? key,
+    required this.name,
+    required this.image,
+  }) : super(key: key);
 
   @override
   State<SubjectPage> createState() => _SubjectPageState();
 }
 
 class _SubjectPageState extends State<SubjectPage> {
+  num strengthMeter = 0;
+
+  @override
+  void initState() {
+    for (int i = 0; i < chapters.length; i++) {
+      strengthMeter += chapters[i]['completed'];
+    }
+    strengthMeter = strengthMeter / chapters.length;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -35,8 +51,7 @@ class _SubjectPageState extends State<SubjectPage> {
         centerTitle: true,
         flexibleSpace: Container(
           decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(widget.image), fit: BoxFit.cover),
+            image: DecorationImage(image: Svg(widget.image), fit: BoxFit.cover),
           ),
         ),
       ),
@@ -49,20 +64,27 @@ class _SubjectPageState extends State<SubjectPage> {
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Row(
                   children: [
-                    const Text(
-                      'Strength Meter : 10%',
-                      style: TextStyle(
+                    Text(
+                      'Strength Meter : $strengthMeter%',
+                      style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                           color: Colors.black),
                     ),
                     const Spacer(),
                     SizedBox(
-                      width: 100,
-                      child: LinearProgressIndicator(
-                        color: Theme.of(context).primaryColor,
-                        value: 10,
-                        semanticsLabel: 'Linear progress indicator',
+                      width: 180,
+                      height: 10,
+                      child: ClipRRect(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        child: LinearProgressIndicator(
+                          color: const Color.fromRGBO(0, 129, 100, 1),
+                          backgroundColor:
+                              const Color.fromRGBO(229, 229, 229, 1),
+                          value: strengthMeter / 100,
+                          semanticsLabel: 'Linear progress indicator',
+                        ),
                       ),
                     ),
                   ],

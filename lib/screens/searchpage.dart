@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:manojacademy/widgets/subjectcards.dart';
 
+List topSearch = ['History', 'Scicence', ''];
+
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
 
@@ -12,10 +14,12 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: ListView(
-        children: [
-          Column(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          physics: const ScrollPhysics(),
+          child: Column(
             children: [
               Padding(
                 padding: const EdgeInsets.all(15.0),
@@ -50,31 +54,29 @@ class _SearchPageState extends State<SearchPage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: SizedBox(
-                      height: height - 100,
-                      child: GridView.builder(
-                        shrinkWrap: true,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                mainAxisSpacing: 3,
-                                crossAxisSpacing: 1,
-                                crossAxisCount: 2),
-                        itemCount: subjectCardsBg.length,
-                        itemBuilder: (context, index) {
-                          return subjectcards(
-                              imageurl: "${subjectCardsBg[index]['image']}",
-                              name: "${subjectCardsBg[index]['name']}",
-                              width: 182,
-                              hegiht: 136);
-                        },
-                      ),
+                    child: GridView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              mainAxisSpacing: 0,
+                              crossAxisSpacing: 10,
+                              crossAxisCount: 2),
+                      itemCount: subjectCardsBg.length,
+                      itemBuilder: (context, index) {
+                        return subjectcards(
+                            imageurl: "${subjectCardsBg[index]['image']}",
+                            name: "${subjectCardsBg[index]['name']}",
+                            width: width / 60,
+                            hegiht: height / 6);
+                      },
                     ),
                   ),
                 ],
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }

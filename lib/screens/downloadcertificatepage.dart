@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 List certificateData = [
   {'subjectname': 'History', 'completed': true},
@@ -42,7 +43,7 @@ class _DownloadCertificatePageState extends State<DownloadCertificatePage> {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Image.asset('icons/arrow-left.png'),
+            child: SvgPicture.asset('icons/arrow-left.svg'),
             style: ButtonStyle(
                 elevation: MaterialStateProperty.all(0),
                 backgroundColor: MaterialStateProperty.all(Colors.white)),
@@ -53,7 +54,7 @@ class _DownloadCertificatePageState extends State<DownloadCertificatePage> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset('icons/award.png'),
+              SvgPicture.asset('icons/award.svg'),
               const SizedBox(
                 width: 5,
               ),
@@ -168,7 +169,7 @@ Widget ceritifcateCard({name, lock}) {
             children: [
               Text(
                 name,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                     color: Colors.black),
@@ -181,20 +182,21 @@ Widget ceritifcateCard({name, lock}) {
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
                         color: lock
-                            ? Color.fromRGBO(0, 129, 100, 1)
+                            ? const Color.fromRGBO(0, 129, 100, 1)
                             : Colors.black),
                   ),
-                  Spacer(),
-                  SizedBox(
-                      width: 30,
-                      height: 30,
-                      child: lock
-                          ? Image.asset('icons/download.png')
-                          : Image.asset(
-                              'icons/cantDownload.png',
-                              width: 50,
-                              height: 50,
-                            ))
+                  const Spacer(),
+                  lock
+                      ? SvgPicture.asset(
+                          'icons/download.svg',
+                          width: 30,
+                          height: 30,
+                        )
+                      : SvgPicture.asset(
+                          'icons/cantDownload.svg',
+                          width: 30,
+                          height: 30,
+                        )
                 ],
               ),
             ],

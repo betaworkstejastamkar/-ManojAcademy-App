@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:manojacademy/screens/login.dart';
 import 'package:manojacademy/screens/navbar.dart';
 
@@ -23,7 +24,6 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     // double height = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -34,7 +34,10 @@ class _RegisterState extends State<Register> {
               children: <Widget>[
                 Stack(
                   children: [
-                    Image.asset('assets/RegisterBg.png'),
+                    SvgPicture.asset(
+                      'assets/RegisterBg.svg',
+                      width: width,
+                    ),
                     Center(
                       child: Container(
                         padding: const EdgeInsets.symmetric(

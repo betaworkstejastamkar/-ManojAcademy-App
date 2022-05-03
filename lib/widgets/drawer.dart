@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:manojacademy/screens/aboutuspage.dart';
 import 'package:manojacademy/screens/downloadcertificatepage.dart';
-import 'package:manojacademy/screens/livelecturespage.dart';
 import 'package:manojacademy/screens/login.dart';
 import 'package:manojacademy/screens/mylearningpage.dart';
 import 'package:manojacademy/screens/profilepage.dart';
@@ -38,68 +38,26 @@ class SideBar extends StatelessWidget {
                 height: 10.0,
                 thickness: 1),
           ),
-          ListTile(
-            onTap: () {
-              navigatePageItem(context, 0);
-            },
-            leading: SizedBox(
-              width: 20,
-              height: 20,
-              child: Image.asset('icons/book.png'),
-            ),
-            title: const Text(
-              'My learning',
-              style: TextStyle(color: Colors.black),
-            ),
-          ),
-          ListTile(
-            onTap: () {
-              navigatePageItem(context, 1);
-            },
-            leading: SizedBox(
-                width: 20,
-                height: 20,
-                child: Image.asset('icons/bar-chart-2.png')),
-            title: const Text(
-              'Test Result',
-              style: TextStyle(color: Colors.black),
-            ),
-          ),
-          ListTile(
-            onTap: () {
-              navigatePageItem(context, 2);
-            },
-            leading: SizedBox(
-                width: 20, height: 20, child: Image.asset('icons/link.png')),
-            title: const Text(
-              'Live Lectures',
-              style: TextStyle(color: Colors.black),
-            ),
-          ),
-          ListTile(
-            onTap: () {
-              navigatePageItem(context, 3);
-            },
-            leading: SizedBox(
-                width: 20, height: 20, child: Image.asset('icons/Wallet2.png')),
-            title: const Text(
-              'Subscription Plan',
-              style: TextStyle(color: Colors.black),
-            ),
-          ),
-          ListTile(
-            onTap: () {
-              navigatePageItem(context, 4);
-            },
-            leading: SizedBox(
-                width: 20,
-                height: 20,
-                child: Image.asset('icons/download.png')),
-            title: const Text(
-              'Download Certificate',
-              style: TextStyle(color: Colors.black),
-            ),
-          ),
+          listItem(
+              name: 'My learning',
+              context: context,
+              index: 0,
+              icon: 'icons/book.svg'),
+          listItem(
+              name: 'Test Result',
+              context: context,
+              index: 1,
+              icon: 'icons/bar-chart.svg'),
+          listItem(
+              name: 'Subscription Plan',
+              context: context,
+              index: 2,
+              icon: 'icons/Wallet.svg'),
+          listItem(
+              name: 'Download Certificate',
+              context: context,
+              index: 3,
+              icon: 'icons/download.svg'),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 30, vertical: 0),
             child: Divider(
@@ -107,32 +65,16 @@ class SideBar extends StatelessWidget {
                 height: 10.0,
                 thickness: 1),
           ),
-          ListTile(
-            onTap: () {
-              navigatePageItem(context, 5);
-            },
-            leading: SizedBox(
-                width: 20,
-                height: 20,
-                child: Image.asset('icons/clipboard.png')),
-            title: const Text(
-              'About Us',
-              style: TextStyle(color: Colors.black),
-            ),
-          ),
-          ListTile(
-            onTap: () {
-              navigatePageItem(context, 6);
-            },
-            leading: SizedBox(
-                width: 20,
-                height: 20,
-                child: Image.asset('icons/paperclip.png')),
-            title: const Text(
-              'Terms and Conditions',
-              style: TextStyle(color: Colors.black),
-            ),
-          ),
+          listItem(
+              name: 'About Us',
+              context: context,
+              index: 4,
+              icon: 'icons/clipboard.svg'),
+          listItem(
+              name: 'Terms and Conditions',
+              context: context,
+              index: 5,
+              icon: 'icons/paperclip.svg'),
           ListTile(
             onTap: () {
               // Navigator.of(context).pop();
@@ -140,7 +82,9 @@ class SideBar extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const Login()));
             },
             leading: SizedBox(
-                width: 20, height: 20, child: Image.asset('icons/log-out.png')),
+                width: 20,
+                height: 20,
+                child: SvgPicture.asset('icons/log-out.svg')),
             title: const Text(
               'Logout',
               style: TextStyle(color: Colors.black),
@@ -190,6 +134,24 @@ class SideBar extends StatelessWidget {
           ),
         ),
       );
+
+  Widget listItem({name, icon, context, index}) {
+    return ListTile(
+      onTap: () {
+        navigatePageItem(context, index);
+      },
+      leading: SizedBox(
+        width: 20,
+        height: 20,
+        child: SvgPicture.asset(icon),
+      ),
+      title: Text(
+        name,
+        style: const TextStyle(color: Colors.black),
+      ),
+    );
+  }
+
   void navigatePageItem(BuildContext context, int index) {
     Navigator.of(context).pop();
     switch (index) {
@@ -201,23 +163,20 @@ class SideBar extends StatelessWidget {
         Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => const TestResultPage()));
         break;
+
       case 2:
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const LivelecturesPage()));
-        break;
-      case 3:
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => const SubPlanPage()));
         break;
-      case 4:
+      case 3:
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => const DownloadCertificatePage()));
         break;
-      case 5:
+      case 4:
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => const AboutUsPage()));
         break;
-      case 6:
+      case 5:
         Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => const TermsConditions()));
         break;

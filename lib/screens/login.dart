@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:manojacademy/screens/navbar.dart';
 import 'package:manojacademy/screens/register.dart';
 
@@ -24,7 +25,10 @@ class _LoginState extends State<Login> {
               children: <Widget>[
                 Stack(
                   children: [
-                    Image.asset('assets/RegisterBg.png'),
+                    SvgPicture.asset(
+                      'assets/RegisterBg.svg',
+                      width: width,
+                    ),
                     Center(
                       child: Container(
                         padding: const EdgeInsets.symmetric(
@@ -123,7 +127,9 @@ class _LoginState extends State<Login> {
                               height: 50,
                               width: 140,
                               child: ElevatedButton.icon(
-                                icon: Image.asset('icons/googleicon.png'),
+                                icon: Image.asset(
+                                  'icons/googleicon.png',
+                                ),
                                 style: ElevatedButton.styleFrom(
                                     elevation: 0,
                                     primary:

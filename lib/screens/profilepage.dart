@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -26,6 +27,15 @@ class _ProfilePageState extends State<ProfilePage> {
           style: TextStyle(
               fontSize: 22, fontWeight: FontWeight.w500, fontFamily: 'Heebo'),
         ),
+        leading: ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: SvgPicture.asset('icons/arrow-left.svg'),
+          style: ButtonStyle(
+              elevation: MaterialStateProperty.all(0),
+              backgroundColor: MaterialStateProperty.all(Colors.white)),
+        ),
       ),
       backgroundColor: Colors.white,
       body: ListView(
@@ -39,9 +49,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     Stack(
                       alignment: AlignmentDirectional.topEnd,
                       children: [
-                        SizedBox(
+                        SvgPicture.asset(
+                          'assets/Profilebg.svg',
                           width: width - 50,
-                          child: Image.asset('assets/carousalbg.png'),
                         ),
                         const Padding(
                           padding:
@@ -100,11 +110,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: SizedBox(
-                              width: 50,
-                              height: 50,
-                              child:
-                                  Image.asset('profile_icons/contact_icon.png'),
+                            child: SvgPicture.asset(
+                              'profile_icons/contactIcon.svg',
+                              width: 40,
+                              height: 40,
                             ),
                           ),
                           Padding(
@@ -145,10 +154,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: SizedBox(
-                              width: 50,
-                              height: 50,
-                              child: Image.asset('profile_icons/mail_icon.png'),
+                            child: SvgPicture.asset(
+                              'profile_icons/mailIcon.svg',
+                              width: 40,
+                              height: 40,
                             ),
                           ),
                           Padding(
@@ -189,10 +198,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: SizedBox(
-                              width: 50,
-                              height: 50,
-                              child: Image.asset('profile_icons/lock_icon.png'),
+                            child: SvgPicture.asset(
+                              'profile_icons/LockIcon.svg',
+                              width: 40,
+                              height: 40,
                             ),
                           ),
                           Padding(
@@ -233,11 +242,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: SizedBox(
-                              width: 50,
-                              height: 50,
-                              child:
-                                  Image.asset('profile_icons/phone_icon.png'),
+                            child: SvgPicture.asset(
+                              'profile_icons/phoneIcon.svg',
+                              width: 40,
+                              height: 40,
                             ),
                           ),
                           Padding(
@@ -283,13 +291,12 @@ class _ProfilePageState extends State<ProfilePage> {
                         Row(
                           children: [
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: Image.asset(
-                                    'profile_icons/purchase_icon.png'),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 5),
+                              child: SvgPicture.asset(
+                                'profile_icons/CardIcon.svg',
+                                width: 40,
+                                height: 40,
                               ),
                             ),
                             const Padding(
@@ -308,10 +315,13 @@ class _ProfilePageState extends State<ProfilePage> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
                               child: SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: Image.asset(
-                                    'profile_icons/back_right_arrow_icon.png'),
+                                width: 30,
+                                height: 30,
+                                child: SvgPicture.asset(
+                                  'icons/arrow-right.svg',
+                                  width: 20,
+                                  height: 20,
+                                ),
                               ),
                             ),
                           ],
@@ -327,14 +337,12 @@ class _ProfilePageState extends State<ProfilePage> {
                         Row(
                           children: [
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: Image.asset(
-                                    'profile_icons/reward_icon.png'),
-                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 5),
+                              child: SvgPicture.asset(
+                                  'profile_icons/rewardIcon.svg',
+                                  width: 40,
+                                  height: 40),
                             ),
                             const Padding(
                               padding: EdgeInsets.all(5.0),
@@ -351,12 +359,8 @@ class _ProfilePageState extends State<ProfilePage> {
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
-                              child: SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: Image.asset(
-                                    'profile_icons/back_right_arrow_icon.png'),
-                              ),
+                              child: SvgPicture.asset('icons/arrow-right.svg',
+                                  width: 30, height: 30),
                             ),
                           ],
                         ),
@@ -371,14 +375,12 @@ class _ProfilePageState extends State<ProfilePage> {
                         Row(
                           children: [
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: Image.asset(
-                                    'profile_icons/message_icon.png'),
-                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 5),
+                              child: SvgPicture.asset(
+                                  'profile_icons/messageIcon.svg',
+                                  width: 40,
+                                  height: 40),
                             ),
                             const Padding(
                               padding: EdgeInsets.all(5.0),
@@ -395,12 +397,8 @@ class _ProfilePageState extends State<ProfilePage> {
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
-                              child: SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: Image.asset(
-                                    'profile_icons/back_right_arrow_icon.png'),
-                              ),
+                              child: SvgPicture.asset('icons/arrow-right.svg',
+                                  width: 30, height: 30),
                             ),
                           ],
                         ),
@@ -415,14 +413,12 @@ class _ProfilePageState extends State<ProfilePage> {
                         Row(
                           children: [
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: SizedBox(
-                                width: 50,
-                                height: 50,
-                                child:
-                                    Image.asset('profile_icons/file_icon.png'),
-                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 5),
+                              child: SvgPicture.asset(
+                                  'profile_icons/filesIcon.svg',
+                                  width: 40,
+                                  height: 40),
                             ),
                             const Padding(
                               padding: EdgeInsets.all(5.0),
@@ -439,12 +435,8 @@ class _ProfilePageState extends State<ProfilePage> {
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
-                              child: SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: Image.asset(
-                                    'profile_icons/back_right_arrow_icon.png'),
-                              ),
+                              child: SvgPicture.asset('icons/arrow-right.svg',
+                                  width: 30, height: 30),
                             ),
                           ],
                         ),
