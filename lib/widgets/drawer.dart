@@ -129,7 +129,7 @@ class SideBar extends StatelessWidget {
                 ],
               ),
               const Spacer(),
-              Image.asset('icons/arrow-right.png'),
+              SvgPicture.asset('icons/arrow-right.svg'),
             ],
           ),
         ),

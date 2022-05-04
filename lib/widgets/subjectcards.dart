@@ -21,7 +21,11 @@ Widget subjectcards(
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => SubjectPage(),
+            builder: (context) => SubjectPage(
+                video: 3060,
+                chapter: 16,
+                subjectname: name,
+                tutorName: 'Mike Roses'),
           ),
         );
       },

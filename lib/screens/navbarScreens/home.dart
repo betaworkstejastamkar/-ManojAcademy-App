@@ -48,8 +48,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-
+    final GlobalKey<ScaffoldState> _key = GlobalKey();
     return Scaffold(
+      key: _key,
       appBar: AppBar(
         actions: [
           Padding(
@@ -61,10 +62,10 @@ class _HomeState extends State<Home> {
         foregroundColor: Colors.black,
         title: const Text('Class 6'),
         centerTitle: true,
-        // leading: IconButton(
-        //   icon: Image.asset('icons/align-left.png'),
-        //   onPressed: () => Scaffold.of(context).openDrawer(),
-        // ),
+        leading: IconButton(
+          icon: SvgPicture.asset('icons/align-left.svg'),
+          onPressed: () => _key.currentState!.openDrawer(),
+        ),
       ),
       drawer: const SideBar(),
       body: SingleChildScrollView(
