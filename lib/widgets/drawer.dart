@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:manojacademy/screens/aboutuspage.dart';
-import 'package:manojacademy/screens/downloadcertificatepage.dart';
+import 'package:manojacademy/screens/DrawerScreens/aboutuspage.dart';
+import 'package:manojacademy/screens/DrawerScreens/downloadcertificatepage.dart';
+import 'package:manojacademy/screens/DrawerScreens/mylearningpage.dart';
+import 'package:manojacademy/screens/DrawerScreens/profilepage.dart';
+import 'package:manojacademy/screens/DrawerScreens/subscriptionplanpage.dart';
+import 'package:manojacademy/screens/DrawerScreens/tacpage.dart';
+import 'package:manojacademy/screens/DrawerScreens/testresultpage.dart';
 import 'package:manojacademy/screens/login.dart';
-import 'package:manojacademy/screens/mylearningpage.dart';
-import 'package:manojacademy/screens/profilepage.dart';
-import 'package:manojacademy/screens/subscriptionplanpage.dart';
-import 'package:manojacademy/screens/tacpage.dart';
-import 'package:manojacademy/screens/testresultpage.dart';
 
 class SideBar extends StatelessWidget {
   const SideBar({Key? key}) : super(key: key);

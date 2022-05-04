@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:manojacademy/screens/home.dart';
-import 'package:manojacademy/screens/livepage.dart';
-import 'package:manojacademy/screens/searchpage.dart';
-import 'package:manojacademy/screens/testpage.dart';
+import 'package:manojacademy/screens/navbarScreens/home.dart';
+import 'package:manojacademy/screens/navbarScreens/livepage.dart';
+import 'package:manojacademy/screens/navbarScreens/searchpage.dart';
+import 'package:manojacademy/screens/navbarScreens/testpage.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);

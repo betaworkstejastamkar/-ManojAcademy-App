@@ -10,19 +10,19 @@ List chapters = [
 ];
 
 // ignore: must_be_immutable
-class SubjectPage extends StatefulWidget {
+class TestChapterPage extends StatefulWidget {
   late String name, image, strengthMeter;
-  SubjectPage({
+  TestChapterPage({
     Key? key,
     required this.name,
     required this.image,
   }) : super(key: key);
 
   @override
-  State<SubjectPage> createState() => _SubjectPageState();
+  State<TestChapterPage> createState() => _TestChapterPageState();
 }
 
-class _SubjectPageState extends State<SubjectPage> {
+class _TestChapterPageState extends State<TestChapterPage> {
   num strengthMeter = 0;
 
   @override

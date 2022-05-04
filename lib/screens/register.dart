@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:manojacademy/screens/login.dart';
-import 'package:manojacademy/screens/navbar.dart';
+import 'package:manojacademy/screens/navbarScreens/navbar.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:manojacademy/screens/subjectpage.dart';
+import 'package:manojacademy/screens/subScreens/testchapterpage.dart';
 
 List testPaperData = [
   {'image': 'assets/blueBox.svg', 'name': 'English', 'complete': 10},
@@ -70,19 +70,16 @@ class _TestPageState extends State<TestPage> {
                         shrinkWrap: true,
                         itemCount: testPaperData.length,
                         itemBuilder: (context, index) {
-                          return ElevatedButton(
-                            style: ButtonStyle(
-                                elevation: MaterialStateProperty.all(0),
-                                foregroundColor: MaterialStateProperty.all(
-                                    Colors.transparent),
-                                backgroundColor: MaterialStateProperty.all(
-                                    Colors.transparent)),
-                            onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => SubjectPage(
-                                        image: testPaperData[index]['image'],
-                                        name: testPaperData[index]['name'],
-                                      )));
+                          return InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => TestChapterPage(
+                                    image: testPaperData[index]['image'],
+                                    name: testPaperData[index]['name'],
+                                  ),
+                                ),
+                              );
                             },
                             child: testCards(
                               imageurl: "${testPaperData[index]['image']}",

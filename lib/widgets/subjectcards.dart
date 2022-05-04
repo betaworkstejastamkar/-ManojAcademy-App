@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:manojacademy/screens/subScreens/subjectpage.dart';
 
 List subjectCardsBg = [
   {'image': 'assets/blueBox.svg', 'name': 'Maths'},
@@ -17,7 +18,13 @@ Widget subjectcards(
     required double hegiht}) {
   return Builder(builder: (context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => SubjectPage(),
+          ),
+        );
+      },
       child: (Padding(
         padding: const EdgeInsets.all(5),
         child: Stack(

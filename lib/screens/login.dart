@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:manojacademy/screens/navbar.dart';
+import 'package:manojacademy/screens/navbarScreens/navbar.dart';
 import 'package:manojacademy/screens/register.dart';
 
 class Login extends StatefulWidget {
