@@ -1,26 +1,19 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:manojacademy/screens/subScreens/videoscreen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:manojacademy/widgets/testchapter.dart';
+import 'package:manojacademy/widgets/videoplayer.dart';
 
-List tests = [
-  {
-    'name': 'A Tale of Two Birds',
-    'question': 24,
-  },
-  {
-    'name': 'The Friendly Mongoose ',
-    'question': 74,
-  },
-  {
-    'name': "The Shepherd's Treasure",
-    'question': 55,
-  },
-  {
-    'name': 'The Old-Clock Shop',
-    'question': 19,
-  },
+List test = [
+  {'name': 'A Tale of Two Birds', 'question': 24, 'completed': 66},
+  {'name': 'The Friendly Mongoose ', 'question': 74, 'completed': 0},
+  {'name': "The Shepherd's Treasure", 'question': 55, 'completed': 0},
+  {'name': 'The Old-Clock Shop', 'question': 19, 'completed': 0},
 ];
+
+List files = ['Notes', 'Question Bank', 'Assignments'];
 
 List chapters = [
   {
@@ -82,28 +75,18 @@ List chapters = [
   {'name': 'The Old-Clock Shop', 'videos': 19},
 ];
 
-class SubjectPage extends StatefulWidget {
-  final String subjectname, tutorName;
-  final num chapter, video;
-  const SubjectPage(
-      {Key? key,
-      required this.subjectname,
-      required this.chapter,
-      required this.video,
-      required this.tutorName})
-      : super(key: key);
+class VideoScreen extends StatefulWidget {
+  const VideoScreen({Key? key}) : super(key: key);
 
   @override
-  State<SubjectPage> createState() => _SubjectPageState();
+  State<VideoScreen> createState() => _VideoScreenState();
 }
 
-class _SubjectPageState extends State<SubjectPage>
+class _VideoScreenState extends State<VideoScreen>
     with TickerProviderStateMixin {
-  // late TabController _tabController;
-
   @override
   Widget build(BuildContext context) {
-    TabController _tabController = TabController(length: 2, vsync: this);
+    TabController _tabController = TabController(length: 3, vsync: this);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -114,167 +97,68 @@ class _SubjectPageState extends State<SubjectPage>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Stack(
+                alignment: Alignment.topLeft,
                 children: [
-                  SvgPicture.asset(
-                    'assets/subjectScreenbg.svg',
-                    width: width,
-                    // height: ,
-                    fit: BoxFit.fill,
-                  ),
+                  const VideoPlayerCard(),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 5),
-                          child: InkWell(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: SvgPicture.asset(
-                                  'icons/Arrow-back-left.svg')),
-                        ),
-                        SizedBox(width: width - 380),
-                        Text(widget.subjectname,
-                            style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.white))
-                      ],
-                    ),
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 80, 0, 10),
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.asset(
-                              'assets/videoThumbnail.png',
-                              width: width - 100,
-                            ),
-                          ),
-                          Column(
-                            children: [
-                              SvgPicture.asset('icons/playbtn.svg'),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              const Text(
-                                'Demo',
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: SvgPicture.asset('icons/arrow-left.svg',
+                          color: Colors.white),
                     ),
                   ),
                 ],
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Text(
-                  widget.subjectname,
-                  style: const TextStyle(
-                      color: Colors.black,
+                  'Stone age man',
+                  style: TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.w500),
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black),
                 ),
               ),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            SvgPicture.asset('icons/points.svg'),
-                            Text(
-                              ' ${widget.chapter} Chapters',
-                              style: const TextStyle(color: Colors.black),
-                            )
-                          ],
+                    const Padding(
+                      padding: EdgeInsets.all(3.0),
+                      child: Text(
+                        'History',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Color.fromRGBO(165, 153, 153, 1),
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          children: [
-                            SvgPicture.asset('icons/points.svg'),
-                            Text(
-                              ' ${widget.video} total video',
-                              style: const TextStyle(color: Colors.black),
-                            )
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          children: [
-                            SvgPicture.asset('icons/points.svg'),
-                            const Text(
-                              ' Live Sessions',
-                              style: TextStyle(color: Colors.black),
-                            )
-                          ],
-                        ),
-                      ],
+                      ),
                     ),
-                    const SizedBox(
-                      width: 20,
+                    const Padding(
+                      padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                      child: Icon(
+                        Icons.alarm,
+                        color: Color.fromRGBO(165, 153, 153, 1),
+                      ),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            SvgPicture.asset('icons/points.svg'),
-                            const Text(
-                              ' Test Series ',
-                              style: TextStyle(color: Colors.black),
-                            )
-                          ],
+                    const Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: Text(
+                        '2m 05s',
+                        style: TextStyle(
+                          color: Color.fromRGBO(165, 153, 153, 1),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          children: [
-                            SvgPicture.asset('icons/points.svg'),
-                            const Text(
-                              ' Certificate',
-                              style: TextStyle(color: Colors.black),
-                            )
-                          ],
-                        ),
-                      ],
+                      ),
                     )
                   ],
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                child: Text(
-                  'Tutor name : ${widget.tutorName}',
-                  style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black),
                 ),
               ),
               TabBar(
@@ -288,6 +172,15 @@ class _SubjectPageState extends State<SubjectPage>
                   Tab(
                     child: Text(
                       'Chapters',
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black),
+                    ),
+                  ),
+                  Tab(
+                    child: Text(
+                      'File',
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w400,
@@ -327,16 +220,23 @@ class _SubjectPageState extends State<SubjectPage>
                                 videoData: chapters[index]['videoData']);
                           }),
                       ListView.builder(
-                          itemCount: tests.length,
-                          physics: const ScrollPhysics(),
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          itemBuilder: (context, index) {
-                            return testCard(
-                                index: index,
-                                name: tests[index]['name'],
-                                question: tests[index]['question']);
-                          }),
+                        itemCount: files.length,
+                        itemBuilder: (context, index) {
+                          return filesCard(
+                            name: files[index],
+                          );
+                        },
+                      ),
+                      ListView.builder(
+                        itemCount: test.length,
+                        itemBuilder: (context, index) {
+                          return testCard(
+                              index: index + 1,
+                              name: test[index]['name'],
+                              question: test[index]['question'],
+                              precent: test[index]['completed']);
+                        },
+                      ),
                     ],
                   ),
                 ),
@@ -347,6 +247,45 @@ class _SubjectPageState extends State<SubjectPage>
       ),
     );
   }
+}
+
+Widget filesCard({name}) {
+  return Builder(
+    builder: (context) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 5),
+        child: Card(
+          shape: RoundedRectangleBorder(
+            side: const BorderSide(color: Color.fromRGBO(196, 196, 196, 1)),
+            borderRadius: BorderRadius.circular(5),
+          ),
+          elevation: 0,
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Row(
+              children: [
+                SvgPicture.asset('icons/Paperclip-1.svg',
+                    color: const Color.fromARGB(255, 165, 153, 153)),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  child: Text(
+                    name,
+                    style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black),
+                  ),
+                ),
+                const Spacer(),
+                SvgPicture.asset('icons/download.svg',
+                    color: const Color.fromARGB(255, 0, 0, 0)),
+              ],
+            ),
+          ),
+        ),
+      );
+    },
+  );
 }
 
 Widget chapterCard({index, name, video, videoData}) {
@@ -440,60 +379,6 @@ Widget chapterCard({index, name, video, videoData}) {
   });
 }
 
-Widget testCard({index, name, question}) {
-  return Builder(builder: (context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
-      child: Card(
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(color: Color.fromRGBO(196, 196, 196, 1)),
-          borderRadius: BorderRadius.circular(5),
-        ),
-        elevation: 0,
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Row(children: [
-            Text(
-              '$index.',
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 24,
-                fontWeight: FontWeight.w800,
-              ),
-            ),
-            const SizedBox(
-              width: 50,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width - 200,
-                  child: Text(
-                    name,
-                    style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black),
-                  ),
-                ),
-                Text(
-                  '$question Question',
-                  style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    color: Color.fromRGBO(0, 0, 0, 0.5),
-                  ),
-                )
-              ],
-            ),
-          ]),
-        ),
-      ),
-    );
-  });
-}
-
 Widget videoList({name, time}) {
   late int sec, min;
   if (time != null) {
@@ -501,6 +386,7 @@ Widget videoList({name, time}) {
     sec = int.parse(tempTime[1]);
     min = int.parse(tempTime[0]);
   }
+
   return Builder(
     builder: (context) {
       return Padding(
@@ -528,7 +414,7 @@ Widget videoList({name, time}) {
                 ),
               ),
               const Spacer(),
-              min != 0 ? Text('${min}m ${sec}s') : Text('${sec}s')
+              min == 0 ? Text('${min}m ${sec}s') : Text('${sec}s')
             ],
           ),
         ),

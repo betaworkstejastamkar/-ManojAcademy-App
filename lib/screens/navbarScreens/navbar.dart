@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:manojacademy/screens/navbarScreens/home.dart';
 import 'package:manojacademy/screens/navbarScreens/livepage.dart';
 import 'package:manojacademy/screens/navbarScreens/searchpage.dart';
@@ -47,26 +48,26 @@ class _BottomNavBarState extends State<BottomNavBar> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: _selectedIndex == 0
-                ? (Image.asset('navbaricons/selected/home.png'))
-                : (Image.asset('navbaricons/unselected/home.png')),
+                ? (SvgPicture.asset('navbaricons/selected/home.svg'))
+                : (SvgPicture.asset('navbaricons/unselected/home.svg')),
             label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: _selectedIndex == 1
-                ? (Image.asset('navbaricons/selected/search.png'))
-                : (Image.asset('navbaricons/unselected/search.png')),
+                ? (SvgPicture.asset('navbaricons/selected/search.svg'))
+                : (SvgPicture.asset('navbaricons/unselected/search.svg')),
             label: 'Search',
           ),
           BottomNavigationBarItem(
             icon: _selectedIndex == 2
-                ? (Image.asset('navbaricons/selected/live.png'))
-                : (Image.asset('navbaricons/unselected/live.png')),
+                ? (SvgPicture.asset('navbaricons/selected/live.svg'))
+                : (SvgPicture.asset('navbaricons/unselected/live.svg')),
             label: 'Live',
           ),
           BottomNavigationBarItem(
             icon: _selectedIndex == 3
-                ? (Image.asset('navbaricons/selected/test.png'))
-                : (Image.asset('navbaricons/unselected/test.png')),
+                ? (SvgPicture.asset('navbaricons/selected/test.svg'))
+                : (SvgPicture.asset('navbaricons/unselected/test.svg')),
             label: 'Test',
           ),
         ],

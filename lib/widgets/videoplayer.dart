@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:manojacademy/widgets/videoplayerwidget.dart';
+import 'package:flick_video_player/flick_video_player.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPlayerCard extends StatefulWidget {
@@ -12,26 +12,24 @@ class _VideoPlayerCardState extends State<VideoPlayerCard> {
   final videoUrl =
       'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4';
   late VideoPlayerController controller;
+  late FlickManager flickManager;
 
   @override
   void initState() {
-    controller = VideoPlayerController.network(videoUrl)
-      ..addListener(() => setState(() {}))
-      ..setLooping(true)
-      ..initialize().then((value) {
-        controller.play();
-      });
+    flickManager = FlickManager(
+      videoPlayerController: VideoPlayerController.network(videoUrl),
+    );
     super.initState();
   }
 
   @override
   void dispose() {
-    controller.dispose();
+    flickManager.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return VideoPlayerWidget(controller: controller);
+    return FlickVideoPlayer(flickManager: flickManager);
   }
 }

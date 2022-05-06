@@ -2,10 +2,40 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:manojacademy/screens/subScreens/notificationscreen.dart';
 import 'package:manojacademy/widgets/drawer.dart';
 import 'package:manojacademy/widgets/popularcards.dart';
 import 'package:manojacademy/widgets/subjectcards.dart';
 import 'package:manojacademy/widgets/videocards.dart';
+
+List imageDataItems = [
+  'assets/carousalbg (2).png',
+  'assets/carousalbg.png',
+];
+
+List videoCardData = [
+  {
+    'image': 'assets/carousalbg (2).png',
+    'name': 'Stone age man',
+    'subname': 'History',
+    'hours': '2',
+    'mintes': '30'
+  },
+  {
+    'image': 'assets/carousalbg (2).png',
+    'name': 'How things work',
+    'subname': 'Science',
+    'hours': '2',
+    'mintes': '27'
+  },
+  {
+    'image': 'assets/carousalbg (2).png',
+    'name': 'The Power of G',
+    'subname': 'Science',
+    'hours': '2',
+    'mintes': '40'
+  }
+];
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -15,35 +45,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List imageDataItems = [
-    'assets/carousalbg (2).png',
-    'assets/carousalbg.png',
-  ];
-
-  List videoCardData = [
-    {
-      'image': 'assets/carousalbg (2).png',
-      'name': 'Stone age man',
-      'subname': 'History',
-      'hours': '2',
-      'mintes': '30'
-    },
-    {
-      'image': 'assets/carousalbg (2).png',
-      'name': 'How things work',
-      'subname': 'Science',
-      'hours': '2',
-      'mintes': '27'
-    },
-    {
-      'image': 'assets/carousalbg (2).png',
-      'name': 'The Power of G',
-      'subname': 'Science',
-      'hours': '2',
-      'mintes': '40'
-    }
-  ];
-
   int _current = 0;
   @override
   Widget build(BuildContext context) {
@@ -53,9 +54,15 @@ class _HomeState extends State<Home> {
       key: _key,
       appBar: AppBar(
         actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: SvgPicture.asset('icons/bell.svg'),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const NotificationScreen()));
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: SvgPicture.asset('icons/bell.svg'),
+            ),
           )
         ],
         backgroundColor: Colors.white,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-Widget chapterCard({index, name, question, precent}) {
+Widget testCard({index, name, question, precent}) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 5),
     child: Card(

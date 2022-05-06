@@ -112,7 +112,7 @@ class _TestChapterPageState extends State<TestChapterPage> {
                   child: ListView.builder(
                     itemCount: chapters.length,
                     itemBuilder: (context, index) {
-                      return chapterCard(
+                      return testCard(
                           index: index + 1,
                           name: "${chapters[index]['name']}",
                           question: "${chapters[index]['question']}",
