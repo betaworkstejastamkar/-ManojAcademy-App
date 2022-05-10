@@ -8,6 +8,7 @@ import 'package:manojacademy/screens/DrawerScreens/subscriptionplanpage.dart';
 import 'package:manojacademy/screens/DrawerScreens/tacpage.dart';
 import 'package:manojacademy/screens/DrawerScreens/testresultpage.dart';
 import 'package:manojacademy/screens/login.dart';
+import 'package:manojacademy/screens/subScreens/downloadedvideo.dart';
 
 class SideBar extends StatelessWidget {
   const SideBar({Key? key}) : super(key: key);
@@ -23,6 +24,9 @@ class SideBar extends StatelessWidget {
       backgroundColor: Colors.white,
       child: ListView(
         children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 20,
+          ),
           buildHeader(
             urlImage: urlImage,
             name: name,
@@ -54,10 +58,15 @@ class SideBar extends StatelessWidget {
               index: 2,
               icon: 'icons/Wallet.svg'),
           listItem(
-              name: 'Download Certificate',
+              name: 'My Downloaded videos',
               context: context,
               index: 3,
               icon: 'icons/download.svg'),
+          listItem(
+              name: 'Accomplishment',
+              context: context,
+              index: 4,
+              icon: 'icons/award.svg'),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 30, vertical: 0),
             child: Divider(
@@ -68,18 +77,18 @@ class SideBar extends StatelessWidget {
           listItem(
               name: 'About Us',
               context: context,
-              index: 4,
+              index: 5,
               icon: 'icons/clipboard.svg'),
           listItem(
               name: 'Terms and Conditions',
               context: context,
-              index: 5,
+              index: 6,
               icon: 'icons/paperclip.svg'),
           ListTile(
             onTap: () {
               // Navigator.of(context).pop();
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Login()));
+                  MaterialPageRoute(builder: (context) => const LoginScreen()));
             },
             leading: SizedBox(
                 width: 20,
@@ -94,21 +103,32 @@ class SideBar extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget buildHeader({
-    required String urlImage,
-    required String name,
-    required String email,
-    required VoidCallback onClicked,
-  }) =>
-      InkWell(
+Widget buildHeader({
+  required String urlImage,
+  required String name,
+  required String email,
+  required VoidCallback onClicked,
+}) =>
+    Builder(
+      builder: (context) => InkWell(
         onTap: onClicked,
         child: Container(
           color: Colors.white,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Row(
             children: [
-              CircleAvatar(radius: 30, backgroundImage: NetworkImage(urlImage)),
+              Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor, // border color
+                  shape: BoxShape.circle,
+                ),
+                child: CircleAvatar(
+                  radius: 30,
+                  backgroundImage: NetworkImage(urlImage),
+                ),
+              ),
               const SizedBox(width: 20),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,54 +153,58 @@ class SideBar extends StatelessWidget {
             ],
           ),
         ),
-      );
-
-  Widget listItem({name, icon, context, index}) {
-    return ListTile(
-      onTap: () {
-        navigatePageItem(context, index);
-      },
-      leading: SizedBox(
-        width: 20,
-        height: 20,
-        child: SvgPicture.asset(icon),
-      ),
-      title: Text(
-        name,
-        style: const TextStyle(color: Colors.black),
       ),
     );
-  }
 
-  void navigatePageItem(BuildContext context, int index) {
-    Navigator.of(context).pop();
-    switch (index) {
-      case 0:
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const MylearningPage()));
-        break;
-      case 1:
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const TestResultPage()));
-        break;
+Widget listItem({name, icon, context, index}) {
+  return ListTile(
+    onTap: () {
+      navigatePageItem(context, index);
+    },
+    leading: SizedBox(
+      width: 20,
+      height: 20,
+      child: SvgPicture.asset(icon),
+    ),
+    title: Text(
+      name,
+      style: const TextStyle(color: Colors.black),
+    ),
+  );
+}
 
-      case 2:
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const SubPlanPage()));
-        break;
-      case 3:
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const DownloadCertificatePage()));
-        break;
-      case 4:
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const AboutUsPage()));
-        break;
-      case 5:
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const TermsConditions()));
-        break;
-      default:
-    }
+void navigatePageItem(BuildContext context, int index) {
+  Navigator.of(context).pop();
+  switch (index) {
+    case 0:
+      Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => const MylearningPage()));
+      break;
+    case 1:
+      Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => const TestResultPage()));
+      break;
+
+    case 2:
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => const SubPlanPage()));
+      break;
+    case 3:
+      Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => const OfflineVideoScreen()));
+      break;
+    case 4:
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => const DownloadCertificatePage()));
+      break;
+    case 5:
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => const AboutUsPage()));
+      break;
+    case 6:
+      Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => const TermsConditions()));
+      break;
+    default:
   }
 }

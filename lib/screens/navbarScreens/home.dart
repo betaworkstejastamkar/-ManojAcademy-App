@@ -46,10 +46,17 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _current = 0;
+  getIndcatorIndex(int index, CarouselPageChangedReason reason) {
+    setState(() {
+      _current = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     final GlobalKey<ScaffoldState> _key = GlobalKey();
+
     return Scaffold(
       key: _key,
       appBar: AppBar(
@@ -70,9 +77,10 @@ class _HomeState extends State<Home> {
         title: const Text('Class 6'),
         centerTitle: true,
         leading: IconButton(
-          icon: SvgPicture.asset('icons/align-left.svg'),
-          onPressed: () => _key.currentState!.openDrawer(),
-        ),
+            icon: SvgPicture.asset('icons/align-left.svg'),
+            onPressed: () {
+              _key.currentState!.openDrawer();
+            }),
       ),
       drawer: const SideBar(),
       body: SingleChildScrollView(
@@ -99,9 +107,9 @@ class _HomeState extends State<Home> {
                         enlargeCenterPage: true,
                         scrollDirection: Axis.horizontal,
                         onPageChanged: (index, reason) {
-                          setState(() {
-                            _current = index;
-                          });
+                          // setState(() {
+                          //   _current = index;
+                          // });
                         }),
                     items: imageDataItems.map((i) {
                       return Builder(
@@ -197,11 +205,10 @@ class _HomeState extends State<Home> {
                         itemCount: popularcardData.length,
                         itemBuilder: (context, index) {
                           return poplurcards(
-                              mintes: "${popularcardData[index]['mintes']}",
                               imageUrl: "${popularcardData[index]['image']}",
                               name: "${popularcardData[index]['name']}",
                               subname: "${popularcardData[index]['subname']}",
-                              hour: "${popularcardData[index]['hours']}");
+                              time: popularcardData[index]['time']);
                         },
                       ),
                     ),

@@ -5,37 +5,37 @@ List popularcardData = [
     'image': 'assets/bluebox.png',
     'subname': 'Science',
     'name': 'The Living Organisms and their Surrounding',
-    'hours': 2,
-    'mintes': 24
+    'time': '1:24'
   },
   {
     'image': 'assets/greenbox.png',
     'subname': 'Science',
     'name': 'Weather and Climate',
-    'hours': 2,
-    'mintes': 24
+    'time': '0:56'
   },
   {
     'image': 'assets/pinkbox.png',
     'subname': 'Geography',
     'name': 'The Living Organisms and their Surrounding',
-    'hours': 2,
-    'mintes': 24
+    'time': '1:20'
   },
   {
     'image': 'assets/yellowbox.png',
     'subname': 'Science',
     'name': 'Weather and Climate',
-    'hours': 2,
-    'mintes': 24
+    'time': '2:24'
   },
 ];
 Widget poplurcards(
     {required String imageUrl,
     required String name,
     required String subname,
-    required String hour,
-    required String mintes}) {
+    required String time}) {
+  late int hour, minte;
+  List tempTime = time.split(":");
+  minte = int.parse(tempTime[1]);
+  hour = int.parse(tempTime[0]);
+
   return Builder(builder: (context) {
     return Card(
       child: (Padding(
@@ -79,7 +79,7 @@ Widget poplurcards(
                     Padding(
                       padding: const EdgeInsets.all(3.0),
                       child: Text(
-                        '${hour}h ${mintes}m',
+                        '${hour}h ${minte}m',
                         style: const TextStyle(
                           color: Color.fromRGBO(165, 153, 153, 1),
                           fontSize: 12,

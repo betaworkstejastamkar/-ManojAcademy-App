@@ -157,7 +157,7 @@ class _RegisterState extends State<Register> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Login()));
+                                  builder: (context) => const LoginScreen()));
                         },
                         child: Text('Already have Account? Login..',
                             style: Theme.of(context).textTheme.bodyText2),

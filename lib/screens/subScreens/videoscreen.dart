@@ -3,6 +3,7 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:manojacademy/api/getstroage.dart';
 import 'package:manojacademy/widgets/testchapter.dart';
 import 'package:manojacademy/widgets/videoplayer.dart';
 
@@ -99,7 +100,11 @@ class _VideoScreenState extends State<VideoScreen>
               Stack(
                 alignment: Alignment.topLeft,
                 children: [
-                  const VideoPlayerCard(),
+                  const VideoPlayerCard(
+                    type: "network",
+                    videoUrl:
+                        'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4',
+                  ),
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -113,53 +118,75 @@ class _VideoScreenState extends State<VideoScreen>
                   ),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Text(
-                  'Stone age man',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.all(3.0),
-                      child: Text(
-                        'History',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: Color.fromRGBO(165, 153, 153, 1),
+              Row(
+                children: [
+                  Column(
+                    children: [
+                      const Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        child: Text(
+                          'Stone age man',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black),
                         ),
                       ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                      child: Icon(
-                        Icons.alarm,
-                        color: Color.fromRGBO(165, 153, 153, 1),
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(5.0),
-                      child: Text(
-                        '2m 05s',
-                        style: TextStyle(
-                          color: Color.fromRGBO(165, 153, 153, 1),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.all(3.0),
+                              child: Text(
+                                'History',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color.fromRGBO(165, 153, 153, 1),
+                                ),
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                              child: Icon(
+                                Icons.alarm,
+                                color: Color.fromRGBO(165, 153, 153, 1),
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.all(5.0),
+                              child: Text(
+                                '2m 05s',
+                                style: TextStyle(
+                                  color: Color.fromRGBO(165, 153, 153, 1),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                       ),
-                    )
-                  ],
-                ),
+                    ],
+                  ),
+                  const Spacer(),
+                  InkWell(
+                    onTap: () {
+                      openFile(
+                        filename: 'test.mp4',
+                        url:
+                            'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4',
+                      );
+                    },
+                    child: SizedBox(
+                        width: width / 5,
+                        child: SvgPicture.asset('icons/download.svg')),
+                  )
+                ],
               ),
               TabBar(
                 unselectedLabelColor: Colors.black,

@@ -110,6 +110,7 @@ class _SubjectPageState extends State<SubjectPage>
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -327,16 +328,17 @@ class _SubjectPageState extends State<SubjectPage>
                                 videoData: chapters[index]['videoData']);
                           }),
                       ListView.builder(
-                          itemCount: tests.length,
-                          physics: const ScrollPhysics(),
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          itemBuilder: (context, index) {
-                            return testCard(
-                                index: index,
-                                name: tests[index]['name'],
-                                question: tests[index]['question']);
-                          }),
+                        itemCount: tests.length,
+                        physics: const ScrollPhysics(),
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemBuilder: (context, index) {
+                          return testCard(
+                              index: index,
+                              name: tests[index]['name'],
+                              question: tests[index]['question']);
+                        },
+                      ),
                     ],
                   ),
                 ),
