@@ -156,7 +156,7 @@ Widget subjectTitle({name, required List resultdata}) {
                   precent: resultdata[index]['completed']);
             },
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              childAspectRatio: 8 / 10,
+              childAspectRatio: 8 / 9,
               crossAxisCount: 2,
             ),
           ),
@@ -177,23 +177,23 @@ Widget testResultView({chapter, question, rigthanswers, wrongansers, precent}) {
       borderRadius: BorderRadius.circular(15),
     ),
     child: Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(15.0),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              TextButton(
-                onPressed: () {},
-                child: const Text('Retry'),
-                style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all(
-                      const Color.fromRGBO(0, 129, 100, 1)),
-                  elevation: MaterialStateProperty.all(0),
-                ),
-              )
-            ],
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.end,
+          //   children: [
+          //     TextButton(
+          //       onPressed: () {},
+          //       child: const Text('Retry'),
+          //       style: ButtonStyle(
+          //         foregroundColor: MaterialStateProperty.all(
+          //             const Color.fromRGBO(0, 129, 100, 1)),
+          //         elevation: MaterialStateProperty.all(0),
+          //       ),
+          //     )
+          //   ],
+          // ),
           Stack(
             alignment: AlignmentDirectional.center,
             children: [

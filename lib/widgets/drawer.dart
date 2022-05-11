@@ -7,7 +7,7 @@ import 'package:manojacademy/screens/DrawerScreens/profilepage.dart';
 import 'package:manojacademy/screens/DrawerScreens/subscriptionplanpage.dart';
 import 'package:manojacademy/screens/DrawerScreens/tacpage.dart';
 import 'package:manojacademy/screens/DrawerScreens/testresultpage.dart';
-import 'package:manojacademy/screens/login.dart';
+import 'package:manojacademy/screens/loginscreen.dart';
 import 'package:manojacademy/screens/subScreens/downloadedvideo.dart';
 
 class SideBar extends StatelessWidget {

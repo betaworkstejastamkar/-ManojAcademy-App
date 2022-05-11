@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:manojacademy/screens/login.dart';
+import 'package:manojacademy/screens/loginscreen.dart';
 import 'package:manojacademy/screens/navbarScreens/navbar.dart';
 
 class Register extends StatefulWidget {
