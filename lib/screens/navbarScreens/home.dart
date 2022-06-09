@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_state.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:flutter_svg/svg.dart';
@@ -46,17 +47,12 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _current = 0;
-  getIndcatorIndex(int index, CarouselPageChangedReason reason) {
-    setState(() {
-      _current = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     final GlobalKey<ScaffoldState> _key = GlobalKey();
-
+    // final CarouselState key1 = GlobalKey();
     return Scaffold(
       key: _key,
       appBar: AppBar(
@@ -80,6 +76,7 @@ class _HomeState extends State<Home> {
             icon: SvgPicture.asset('icons/align-left.svg'),
             onPressed: () {
               _key.currentState!.openDrawer();
+              // Scaffold.of(context).openDrawer();
             }),
       ),
       drawer: const SideBar(),
@@ -94,8 +91,9 @@ class _HomeState extends State<Home> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 10, 20, 4),
                   child: CarouselSlider(
+                    key: null,
                     options: CarouselOptions(
-                        height: height - 650,
+                        height: width < 440 ? height / 5 : height / 3,
                         aspectRatio: 16 / 9,
                         viewportFraction: 1,
                         initialPage: 0,
@@ -107,16 +105,20 @@ class _HomeState extends State<Home> {
                         enlargeCenterPage: true,
                         scrollDirection: Axis.horizontal,
                         onPageChanged: (index, reason) {
-                          // setState(() {
-                          //   _current = index;
-                          // });
+                          setState(() {
+                            _current = index;
+                          });
                         }),
                     items: imageDataItems.map((i) {
                       return Builder(
                         builder: (BuildContext context) {
                           return ClipRRect(
                               borderRadius: BorderRadius.circular(15),
-                              child: Image.asset(i));
+                              child: Image.asset(
+                                i,
+                                fit: BoxFit.contain,
+                                width: width,
+                              ));
                         },
                       );
                     }).toList(),

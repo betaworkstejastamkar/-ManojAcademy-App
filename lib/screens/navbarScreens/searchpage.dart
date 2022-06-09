@@ -57,11 +57,10 @@ class _SearchPageState extends State<SearchPage> {
                     child: GridView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              mainAxisSpacing: 0,
-                              crossAxisSpacing: 10,
-                              crossAxisCount: 2),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisSpacing: 0,
+                          crossAxisSpacing: 10,
+                          crossAxisCount: width < 440 ? 2 : 3),
                       itemCount: subjectCardsBg.length,
                       itemBuilder: (context, index) {
                         return subjectcards(

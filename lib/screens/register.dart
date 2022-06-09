@@ -37,12 +37,14 @@ class _RegisterState extends State<Register> {
                     SvgPicture.asset(
                       'assets/RegisterBg.svg',
                       width: width,
+                      fit: BoxFit.fill,
+                      // height: 200,
                     ),
-                    Center(
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 0, vertical: 70),
-                        child: const Text(
+                    const Center(
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 0, vertical: 70),
+                        child: Text(
                           'Register',
                           style: TextStyle(
                               fontSize: 30,
@@ -54,13 +56,19 @@ class _RegisterState extends State<Register> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: width - 380, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Column(
                     children: [
-                      const TextField(
+                      TextField(
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(
+                            focusColor: Theme.of(context).primaryColor,
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor)),
+                            border: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Color.fromARGB(31, 229, 229, 229)),
                                 borderRadius:
@@ -71,9 +79,15 @@ class _RegisterState extends State<Register> {
                       const SizedBox(
                         height: 14,
                       ),
-                      const TextField(
+                      TextField(
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(
+                            focusColor: Theme.of(context).primaryColor,
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor)),
+                            border: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Color.fromRGBO(229, 229, 229, 1)),
                                 borderRadius:
@@ -84,13 +98,32 @@ class _RegisterState extends State<Register> {
                       const SizedBox(
                         height: 14,
                       ),
-                      SizedBox(
-                        width: width - 130,
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 3),
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            top: BorderSide(
+                              style: BorderStyle.solid,
+                            ),
+                            right: BorderSide(style: BorderStyle.solid),
+                            left: BorderSide(style: BorderStyle.solid),
+                            bottom: BorderSide(style: BorderStyle.solid),
+                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
+                        width: width,
                         child: DropdownButton(
+                          underline: const Text(''),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10)),
                           value: dropdownvalue,
-                          icon: const Icon(Icons.keyboard_arrow_down),
+                          icon: Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: const [
+                              Icon(Icons.keyboard_arrow_down),
+                            ],
+                          ),
                           items: items.map((String items) {
                             return DropdownMenuItem(
                               value: items,
@@ -107,9 +140,15 @@ class _RegisterState extends State<Register> {
                       const SizedBox(
                         height: 14,
                       ),
-                      const TextField(
+                      TextField(
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(
+                            focusColor: Theme.of(context).primaryColor,
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor)),
+                            border: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Color.fromRGBO(229, 229, 229, 1)),
                                 borderRadius:
@@ -120,9 +159,15 @@ class _RegisterState extends State<Register> {
                       const SizedBox(
                         height: 14,
                       ),
-                      const TextField(
+                      TextField(
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(
+                            focusColor: Theme.of(context).primaryColor,
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor)),
+                            border: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Color.fromRGBO(229, 229, 229, 1)),
                                 borderRadius:
@@ -136,8 +181,8 @@ class _RegisterState extends State<Register> {
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             primary: Theme.of(context).primaryColor,
-                            padding: EdgeInsets.symmetric(
-                                horizontal: width - 350, vertical: 15),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 100, vertical: 15),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15.0),
                             )),
