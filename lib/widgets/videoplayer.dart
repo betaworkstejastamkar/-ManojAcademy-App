@@ -43,8 +43,8 @@ class _VideoPlayerCardState extends State<VideoPlayerCard> {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
-      // DeviceOrientation.landscapeLeft,
-      // DeviceOrientation.landscapeRight
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight
     ]);
     if (temp != widget.videoUrl) {
       setState(() {
@@ -58,9 +58,9 @@ class _VideoPlayerCardState extends State<VideoPlayerCard> {
       return FlickVideoPlayer(
         flickManager: flickManager,
         preferredDeviceOrientation: const [
-          DeviceOrientation.portraitUp,
-          // DeviceOrientation.landscapeRight,
-          // DeviceOrientation.landscapeLeft,
+          // DeviceOrientation.portraitUp,
+          DeviceOrientation.landscapeRight,
+          DeviceOrientation.landscapeLeft,
         ],
         systemUIOverlay: const [],
       );
