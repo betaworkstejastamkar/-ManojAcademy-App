@@ -1,7 +1,11 @@
+import 'package:bottom_picker/bottom_picker.dart';
+import 'package:bottom_picker/resources/arrays.dart';
+import 'package:bottom_picker/widgets/bottom_picker_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:manojacademy/data/studentdata.dart';
 import 'package:manojacademy/screens/subScreens/notificationscreen.dart';
+import 'package:manojacademy/widgets/bottomsheet.dart';
 import 'package:manojacademy/widgets/carouselwindow.dart';
 import 'package:manojacademy/widgets/drawer.dart';
 import 'package:manojacademy/widgets/popularcards.dart';
@@ -45,18 +49,36 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String dropdownvalue = studentClass;
-  var items = [
-    'class 4',
-    'class 5',
-    'class 6',
-    'class 7',
-    'class 8',
-    'class 9',
-  ];
+  void openPickerWithCustomPickerTextStyle(BuildContext context) {
+    BottomPicker(
+      height: 400,
+      dismissable: true,
+      items: [for (int i = 0; i < classes.length; i++) Text(classes[i])],
+      title: '',
+      pickerTextStyle: const TextStyle(
+          color: Colors.black, fontWeight: FontWeight.bold, fontSize: 24),
+      onSubmit: (index) {
+        setState(() {
+          studentClass = classes[index];
+        });
+      },
+      layoutOrientation: LAYOUT_ORIENTATION.rtl,
+      itemExtent: 30,
+      displayCloseIcon: false,
+      displayButtonIcon: false,
+      buttonSingleColor: Theme.of(context).primaryColor,
+      buttonText: 'ok',
+      buttonAlignement: MainAxisAlignment.end,
+      buttonTextStyle: const TextStyle(
+          fontSize: 12, fontWeight: FontWeight.w500, color: Colors.white),
+      closeIconColor: Colors.red,
+    ).show(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _key = GlobalKey();
+    String dropdownvalue = studentClass;
     return Scaffold(
       key: _key,
       appBar: AppBar(
@@ -75,6 +97,7 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         title: InkWell(
+          onTap: () => openPickerWithCustomPickerTextStyle(context),
           child: Center(
             child: Wrap(
               crossAxisAlignment: WrapCrossAlignment.start,

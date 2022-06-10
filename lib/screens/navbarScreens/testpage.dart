@@ -32,9 +32,13 @@ class _TestPageState extends State<TestPage> {
                   Stack(
                     alignment: AlignmentDirectional.topCenter,
                     children: [
-                      SvgPicture.asset(
-                        'assets/testPageNarbar.svg',
+                      SizedBox(
                         width: width,
+                        height: 200,
+                        child: SvgPicture.asset(
+                          'assets/testPageNarbar.svg',
+                          fit: BoxFit.fill,
+                        ),
                       ),
                       const Padding(
                         padding: EdgeInsets.fromLTRB(0, 40, 0, 0),

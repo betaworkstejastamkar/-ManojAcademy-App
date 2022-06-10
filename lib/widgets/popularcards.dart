@@ -61,6 +61,9 @@ Widget poplurcards(
                         fontWeight: FontWeight.bold),
                   ),
                 ),
+                const SizedBox(
+                  height: 5,
+                ),
                 Text(
                   subname,
                   style: const TextStyle(
@@ -69,8 +72,11 @@ Widget poplurcards(
                     fontWeight: FontWeight.w500,
                   ),
                 ),
+                const SizedBox(
+                  height: 5,
+                ),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Icon(
                       Icons.alarm,

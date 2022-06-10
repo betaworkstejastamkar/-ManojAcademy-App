@@ -112,10 +112,11 @@ class _TestChapterPageState extends State<TestChapterPage> {
                     itemCount: chapters.length,
                     itemBuilder: (context, index) {
                       return testCard(
-                          index: index + 1,
-                          name: "${chapters[index]['name']}",
-                          question: "${chapters[index]['question']}",
-                          precent: "${chapters[index]['completed']}");
+                        index: index + 1,
+                        name: chapters[index]['name'],
+                        question: chapters[index]['question'],
+                        precent: chapters[index]['completed'],
+                      );
                     },
                   ),
                 ),

@@ -60,14 +60,15 @@ class _SearchPageState extends State<SearchPage> {
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           mainAxisSpacing: 0,
                           crossAxisSpacing: 10,
+                          childAspectRatio: 1 / 1,
                           crossAxisCount: width < 440 ? 2 : 3),
                       itemCount: subjectCardsBg.length,
                       itemBuilder: (context, index) {
                         return subjectcards(
                             imageurl: "${subjectCardsBg[index]['image']}",
                             name: "${subjectCardsBg[index]['name']}",
-                            width: width / 60,
-                            hegiht: height / 6);
+                            width: width,
+                            hegiht: height);
                       },
                     ),
                   ),

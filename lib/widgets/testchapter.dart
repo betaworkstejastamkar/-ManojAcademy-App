@@ -11,6 +11,7 @@ Widget testCard({index, name, question, precent}) {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => LiveTestPage(
+                chapNo: index,
                 chapterName: name,
                 timer: 60,
               ),

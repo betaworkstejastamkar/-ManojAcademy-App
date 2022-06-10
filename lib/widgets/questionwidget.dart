@@ -60,6 +60,7 @@ class _McqCardsState extends State<McqCards> {
           ),
           ListView.builder(
             itemCount: widget.answers.length,
+            shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (_, index) {
               return Padding(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 // import 'package:manojacademy/screens/login.dart';
 import 'package:manojacademy/screens/register.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
@@ -34,5 +35,24 @@ void main() {
           bodyText2: TextStyle(color: Color.fromRGBO(0, 129, 100, 1)),
         ),
       ),
-      home: const Register()));
+      home: const Main()));
+}
+
+class Main extends StatefulWidget {
+  const Main({Key? key}) : super(key: key);
+
+  @override
+  State<Main> createState() => _MainState();
+}
+
+class _MainState extends State<Main> {
+  @override
+  Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight
+    ]);
+    return const Register();
+  }
 }
