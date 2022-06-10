@@ -154,10 +154,8 @@ class _SubjectPageState extends State<SubjectPage>
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(10),
-                            child: Image.asset(
-                              'assets/videoThumbnail.png',
-                              width: width - 100,
-                            ),
+                            child: Image.asset('assets/videoThumbnail.png',
+                                width: width - 200, fit: BoxFit.fill),
                           ),
                           Column(
                             children: [

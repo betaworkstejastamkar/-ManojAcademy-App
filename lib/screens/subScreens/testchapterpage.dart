@@ -106,7 +106,7 @@ class _TestChapterPageState extends State<TestChapterPage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: width - 400),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: SizedBox(
                   height: height,
                   child: ListView.builder(

@@ -101,13 +101,20 @@ class _TestPageState extends State<TestPage> {
 
 Widget testCards({imageurl, name, precent}) {
   return Card(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     elevation: 4,
     child: Row(children: [
-      SvgPicture.asset(
-        imageurl,
+      Container(
         width: 80,
-        height: 70,
-        fit: BoxFit.cover,
+        height: 110,
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
+          child: SvgPicture.asset(
+            imageurl,
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
       const SizedBox(
         width: 20,
