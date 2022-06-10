@@ -33,6 +33,7 @@ class _DownloadCertificatePageState extends State<DownloadCertificatePage> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
@@ -98,15 +99,18 @@ class _DownloadCertificatePageState extends State<DownloadCertificatePage> {
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: completedCertificate.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 8 / 10,
-                    crossAxisCount: 2,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 1 / 1.15,
+                    crossAxisCount: width < 440 ? 2 : 3,
                   ),
                   itemBuilder: (context, index) {
                     return ceritifcateCard(
                         name: completedCertificate[index]['subjectname'],
                         lock: completedCertificate[index]['completed']);
                   }),
+              const SizedBox(
+                height: 10,
+              ),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Text(
@@ -131,14 +135,17 @@ class _DownloadCertificatePageState extends State<DownloadCertificatePage> {
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: notcompletedCertificate.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 8 / 10,
-                    crossAxisCount: 2,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 1 / 1.15,
+                    crossAxisCount: width < 440 ? 2 : 3,
                   ),
                   itemBuilder: (context, index) {
-                    return ceritifcateCard(
-                        name: notcompletedCertificate[index]['subjectname'],
-                        lock: notcompletedCertificate[index]['completed']);
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: ceritifcateCard(
+                          name: notcompletedCertificate[index]['subjectname'],
+                          lock: notcompletedCertificate[index]['completed']),
+                    );
                   }),
             ],
           ),
@@ -149,60 +156,77 @@ class _DownloadCertificatePageState extends State<DownloadCertificatePage> {
 }
 
 Widget ceritifcateCard({name, lock}) {
-  return Card(
-    child: Column(
+  return Builder(builder: (context) {
+    double width = MediaQuery.of(context).size.width;
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
-            height: 160,
+        Container(
+          width: width,
+          height: width < 440 ? width / 3 : width / 4,
+          decoration: BoxDecoration(
+            color: lock ? Colors.transparent : Colors.grey.shade200,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(18),
+              topRight: Radius.circular(18),
+            ),
+          ),
+          child: ClipRRect(
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(18), topRight: Radius.circular(18)),
             child: lock
-                ? Image.asset('assets/certificate.png',
-                    width: 600, fit: BoxFit.fill)
+                ? Image.asset(
+                    'assets/certificate.png',
+                    fit: BoxFit.cover,
+                  )
                 : Center(
-                    child: Image.asset('icons/lock.png',
-                        width: 80, fit: BoxFit.contain),
-                  )),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                name,
-                style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black),
-              ),
-              Row(
-                children: [
-                  Text(
-                    "Download",
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
+                    child: Image.asset('icons/lock.png', fit: BoxFit.contain),
+                  ),
+          ),
+        ),
+        Card(
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(18),
+                  bottomRight: Radius.circular(18))),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  name,
+                  style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "Download",
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: lock
+                              ? const Color.fromRGBO(0, 129, 100, 1)
+                              : Colors.black),
+                    ),
+                    const Spacer(),
+                    SvgPicture.asset('icons/download.svg',
+                        width: 30,
+                        height: 30,
                         color: lock
                             ? const Color.fromRGBO(0, 129, 100, 1)
-                            : Colors.black),
-                  ),
-                  const Spacer(),
-                  lock
-                      ? SvgPicture.asset(
-                          'icons/download.svg',
-                          width: 30,
-                          height: 30,
-                        )
-                      : SvgPicture.asset(
-                          'icons/cantDownload.svg',
-                          width: 30,
-                          height: 30,
-                        )
-                ],
-              ),
-            ],
+                            : const Color.fromRGBO(1, 1, 1, 0.5))
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ],
-    ),
-  );
+    );
+  });
 }

@@ -1,9 +1,8 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:carousel_slider/carousel_state.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:manojacademy/data/studentdata.dart';
 import 'package:manojacademy/screens/subScreens/notificationscreen.dart';
+import 'package:manojacademy/widgets/carouselwindow.dart';
 import 'package:manojacademy/widgets/drawer.dart';
 import 'package:manojacademy/widgets/popularcards.dart';
 import 'package:manojacademy/widgets/subjectcards.dart';
@@ -46,13 +45,18 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _current = 0;
+  String dropdownvalue = studentClass;
+  var items = [
+    'class 4',
+    'class 5',
+    'class 6',
+    'class 7',
+    'class 8',
+    'class 9',
+  ];
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     final GlobalKey<ScaffoldState> _key = GlobalKey();
-    // final CarouselState key1 = GlobalKey();
     return Scaffold(
       key: _key,
       appBar: AppBar(
@@ -70,12 +74,32 @@ class _HomeState extends State<Home> {
         ],
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
-        title: const Text('Class 6'),
+        title: InkWell(
+          child: Center(
+            child: Wrap(
+              crossAxisAlignment: WrapCrossAlignment.start,
+              children: [
+                Text(dropdownvalue),
+                const SizedBox(
+                  width: 5,
+                ),
+                const RotatedBox(
+                  quarterTurns: 3,
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    size: 18,
+                    color: Colors.black,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
         centerTitle: true,
         leading: IconButton(
             icon: SvgPicture.asset('icons/align-left.svg'),
             onPressed: () {
-              _key.currentState!.openDrawer();
+              _key.currentState?.openDrawer();
               // Scaffold.of(context).openDrawer();
             }),
       ),
@@ -85,54 +109,10 @@ class _HomeState extends State<Home> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const CarouselWindow(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 10, 20, 4),
-                  child: CarouselSlider(
-                    key: null,
-                    options: CarouselOptions(
-                        height: width < 440 ? height / 5 : height / 3,
-                        aspectRatio: 16 / 9,
-                        viewportFraction: 1,
-                        initialPage: 0,
-                        autoPlay: true,
-                        autoPlayInterval: const Duration(seconds: 10),
-                        autoPlayAnimationDuration:
-                            const Duration(milliseconds: 1000),
-                        autoPlayCurve: Curves.fastOutSlowIn,
-                        enlargeCenterPage: true,
-                        scrollDirection: Axis.horizontal,
-                        onPageChanged: (index, reason) {
-                          setState(() {
-                            _current = index;
-                          });
-                        }),
-                    items: imageDataItems.map((i) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return ClipRRect(
-                              borderRadius: BorderRadius.circular(15),
-                              child: Image.asset(
-                                i,
-                                fit: BoxFit.contain,
-                                width: width,
-                              ));
-                        },
-                      );
-                    }).toList(),
-                  ),
-                ),
-                CarouselIndicator(
-                  height: 10,
-                  width: 10,
-                  cornerRadius: 10,
-                  color: const Color.fromRGBO(0, 0, 0, 0.6),
-                  activeColor: const Color.fromRGBO(0, 129, 100, 1),
-                  count: imageDataItems.length,
-                  index: _current,
-                ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
                   child: SizedBox(

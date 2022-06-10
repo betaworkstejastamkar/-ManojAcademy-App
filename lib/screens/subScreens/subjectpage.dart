@@ -126,7 +126,7 @@ class _SubjectPageState extends State<SubjectPage>
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 10),
                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 5),
@@ -137,12 +137,14 @@ class _SubjectPageState extends State<SubjectPage>
                               child: SvgPicture.asset(
                                   'icons/Arrow-back-left.svg')),
                         ),
-                        SizedBox(width: width - 380),
+                        const SizedBox(
+                          width: 30,
+                        ),
                         Text(widget.subjectname,
                             style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w800,
-                                color: Colors.white))
+                                color: Colors.white)),
                       ],
                     ),
                   ),

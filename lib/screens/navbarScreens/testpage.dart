@@ -104,11 +104,11 @@ Widget testCards({imageurl, name, precent}) {
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     elevation: 4,
     child: Row(children: [
-      Container(
+      SizedBox(
         width: 80,
         height: 110,
         child: ClipRRect(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
           child: SvgPicture.asset(
             imageurl,
