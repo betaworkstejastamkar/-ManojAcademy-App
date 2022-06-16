@@ -1,0 +1,198 @@
+{
+    "Class-6": [
+        {
+            "Subject": [
+                {
+                    "English": {
+                        "Chapters": [
+                            {
+                                "ChapterNo": 0,
+                                "name": "Demo",
+                                "video": 1
+                            },
+                            {
+                                "ChapterNo": 1,
+                                "name": "A Letter to God",
+                                "video": 3
+                            },
+                            {
+                                "ChapterNo": 2,
+                                "name": "Nelson Mandela: Long Walk to Freedom",
+                                "video": 2
+                            },
+                            {
+                                "ChapterNo": 3,
+                                "name": "Two Stories about Flying",
+                                "video": 5
+                            },
+                            {
+                                "ChapterNo": 4,
+                                "name": "From the Diary of Anne Frank",
+                                "video": 2
+                            }
+                        ]
+                    }
+                },
+                {
+                    "Maths": {
+                        "Chapters": [
+                            {
+                                "ChapterNo": 0,
+                                "name": "Demo",
+                                "video": 1
+                            },
+                            {
+                                "ChapterNo": 1,
+                                "name": "Real Numbers",
+                                "video": 3
+                            },
+                            {
+                                "ChapterNo": 2,
+                                "name": "Polynomials",
+                                "video": 2
+                            },
+                            {
+                                "ChapterNo": 3,
+                                "name": "Pair of Linear Equations in Two Variables",
+                                "video": 5
+                            },
+                            {
+                                "ChapterNo": 4,
+                                "name": "Quadratic Equations",
+                                "video": 2
+                            }
+                        ]
+                    }
+                },
+                {
+                    "Science": {
+                        "Chapters": [
+                            {
+                                "ChapterNo": 0,
+                                "name": "Demo",
+                                "video": 1
+                            },
+                            {
+                                "ChapterNo": 1,
+                                "name": "Chemical reactions and equations",
+                                "video": 3
+                            },
+                            {
+                                "ChapterNo": 2,
+                                "name": "Acids, bases and salt",
+                                "video": 2
+                            },
+                            {
+                                "ChapterNo": 3,
+                                "name": "Metals and Non-metals",
+                                "video": 5
+                            },
+                            {
+                                "ChapterNo": 4,
+                                "name": "Carbon and its Compounds",
+                                "video": 2
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "Class-7": {
+        "Subject": [
+            {
+                "English": {
+                    "Chapters": [
+                        {
+                            "ChapterNo": 0,
+                            "name": "Demo",
+                            "video": 1
+                        },
+                        {
+                            "ChapterNo": 1,
+                            "name": "A Letter to God",
+                            "video": 3
+                        },
+                        {
+                            "ChapterNo": 2,
+                            "name": "Nelson Mandela: Long Walk to Freedom",
+                            "video": 2
+                        },
+                        {
+                            "ChapterNo": 3,
+                            "name": "Two Stories about Flying",
+                            "video": 5
+                        },
+                        {
+                            "ChapterNo": 4,
+                            "name": "From the Diary of Anne Frank",
+                            "video": 2
+                        }
+                    ]
+                }
+            },
+            {
+                "Maths": {
+                    "Chapters": [
+                        {
+                            "ChapterNo": 0,
+                            "name": "Demo",
+                            "video": 1
+                        },
+                        {
+                            "ChapterNo": 1,
+                            "name": "Real Numbers",
+                            "video": 3
+                        },
+                        {
+                            "ChapterNo": 2,
+                            "name": "Polynomials",
+                            "video": 2
+                        },
+                        {
+                            "ChapterNo": 3,
+                            "name": "Pair of Linear Equations in Two Variables",
+                            "video": 5
+                        },
+                        {
+                            "ChapterNo": 4,
+                            "name": "Quadratic Equations",
+                            "video": 2
+                        }
+                    ]
+                }
+            },
+            {
+                "Science": {
+                    "Chapters": [
+                        {
+                            "ChapterNo": 0,
+                            "name": "Demo",
+                            "video": 1
+                        },
+                        {
+                            "ChapterNo": 1,
+                            "name": "Chemical reactions and equations",
+                            "video": 3
+                        },
+                        {
+                            "ChapterNo": 2,
+                            "name": "Acids, bases and salt",
+                            "video": 2
+                        },
+                        {
+                            "ChapterNo": 3,
+                            "name": "Metals and Non-metals",
+                            "video": 5
+                        },
+                        {
+                            "ChapterNo": 4,
+                            "name": "Carbon and its Compounds",
+                            "video": 2
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

@@ -1,16 +1,16 @@
 import 'package:bottom_picker/bottom_picker.dart';
 import 'package:bottom_picker/resources/arrays.dart';
-import 'package:bottom_picker/widgets/bottom_picker_button.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:manojacademy/data/studentdata.dart';
 import 'package:manojacademy/screens/subScreens/notificationscreen.dart';
-import 'package:manojacademy/widgets/bottomsheet.dart';
 import 'package:manojacademy/widgets/carouselwindow.dart';
 import 'package:manojacademy/widgets/drawer.dart';
 import 'package:manojacademy/widgets/popularcards.dart';
 import 'package:manojacademy/widgets/subjectcards.dart';
 import 'package:manojacademy/widgets/videocards.dart';
+import 'dart:io';
 
 List imageDataItems = [
   'assets/carousalbg (2).png',
@@ -49,6 +49,20 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final Dio dio = Dio();
+  var client = HttpClient();
+  final url = Uri.parse(
+      'https://firebasestorage.googleapis.com/v0/b/manjoacadmey.appspot.com/o/db.json?alt=media&token=14bf7ac6-eabf-44bf-96d0-c2463b6a12bb');
+  Future<bool> fetchAlbum() async {
+    try {
+      var response = await dio.get('https://1buymeds.com/tejas.json');
+      print(response.data['imageDataItems'][1]);
+    } catch (e) {
+      print(e);
+    }
+    return true;
+  }
+
   void openPickerWithCustomPickerTextStyle(BuildContext context) {
     BottomPicker(
       height: 400,
@@ -77,6 +91,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    fetchAlbum();
     final GlobalKey<ScaffoldState> _key = GlobalKey();
     String dropdownvalue = studentClass;
     return Scaffold(
