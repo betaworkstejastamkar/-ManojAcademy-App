@@ -71,7 +71,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.16.0"
-<<<<<<< HEAD
   crypto:
     dependency: transitive
     description:
@@ -79,8 +78,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
-=======
->>>>>>> 6101537e39d8898595a4d7214c407f17f4af9213
   csslib:
     dependency: transitive
     description:
@@ -155,7 +152,7 @@ packages:
       name: flutter_svg
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.0"
+    version: "1.0.3"
   flutter_svg_provider:
     dependency: "direct main"
     description:
@@ -215,7 +212,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.4"
-<<<<<<< HEAD
   json_annotation:
     dependency: transitive
     description:
@@ -223,8 +219,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.5.0"
-=======
->>>>>>> 6101537e39d8898595a4d7214c407f17f4af9213
   lints:
     dependency: transitive
     description:
@@ -453,8 +447,7 @@ packages:
       name: typed_data
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
-    version: "1.3.0"
+    version: "1.3.1"
   universal_html:
     dependency: transitive
     description:
@@ -469,9 +462,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.4"
-=======
-    version: "1.3.1"
->>>>>>> 6101537e39d8898595a4d7214c407f17f4af9213
   vector_math:
     dependency: transitive
     description:
@@ -569,8 +559,7 @@ packages:
       name: xml
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
-    version: "5.3.1"
+    version: "5.4.1"
   youtube_explode_dart:
     dependency: transitive
     description:
@@ -581,9 +570,3 @@ packages:
 sdks:
   dart: ">=2.17.0 <3.0.0"
   flutter: ">=2.10.0"
-=======
-    version: "6.1.0"
-sdks:
-  dart: ">=2.17.0 <3.0.0"
-  flutter: ">=2.11.0-0.1.pre"
->>>>>>> 6101537e39d8898595a4d7214c407f17f4af9213
