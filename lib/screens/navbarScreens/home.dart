@@ -1,6 +1,6 @@
 import 'package:bottom_picker/bottom_picker.dart';
 import 'package:bottom_picker/resources/arrays.dart';
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' show Dio;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:manojacademy/data/studentdata.dart';
@@ -10,7 +10,6 @@ import 'package:manojacademy/widgets/drawer.dart';
 import 'package:manojacademy/widgets/popularcards.dart';
 import 'package:manojacademy/widgets/subjectcards.dart';
 import 'package:manojacademy/widgets/videocards.dart';
-import 'dart:io';
 
 List imageDataItems = [
   'assets/carousalbg (2).png',
@@ -50,13 +49,11 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final Dio dio = Dio();
-  var client = HttpClient();
-  final url = Uri.parse(
-      'https://firebasestorage.googleapis.com/v0/b/manjoacadmey.appspot.com/o/db.json?alt=media&token=14bf7ac6-eabf-44bf-96d0-c2463b6a12bb');
   Future<bool> fetchAlbum() async {
     try {
-      var response = await dio.get('https://1buymeds.com/tejas.json');
-      print(response.data['imageDataItems'][1]);
+      var response = await dio
+          .get('https://run.mocky.io/v3/da96d92c-09b6-4b33-844d-0dcd584a1e1e');
+      // print(response.data);
     } catch (e) {
       print(e);
     }
