@@ -1,0 +1,20 @@
+{
+    "plans": [
+        {
+            "months": 24,
+            "amount": "₹ 18,999"
+        },
+        {
+            "months": 12,
+            "amount": "₹ 14,999"
+        },
+        {
+            "months": 6,
+            "amount": "₹ 9,999"
+        },
+        {
+            "months": 3,
+            "amount": "₹ 7,999"
+        }
+    ]
+}

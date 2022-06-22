@@ -11,7 +11,7 @@ import 'package:manojacademy/widgets/popularcards.dart';
 import 'package:manojacademy/widgets/subjectcards.dart';
 import 'package:manojacademy/widgets/videocards.dart';
 
-var popularCard = [];
+var HomePage = [];
 List imageDataItems = [
   'assets/carousalbg (2).png',
   'assets/carousalbg.png',
@@ -79,7 +79,7 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    classData = fetchPopularCardData();
+    classData = fetchHomePage();
     super.initState();
   }
 
@@ -87,12 +87,12 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _key = GlobalKey();
     String dropdownvalue = studentClass;
-    print(classData);
     return FutureBuilder(
       future: classData,
       builder: (context, snapshot) {
         if (snapshot.hasData && snapshot.data != null) {
-          popularCard = snapshot.data as List<dynamic>;
+          HomePage = snapshot.data as List<dynamic>;
+
           return Scaffold(
             key: _key,
             appBar: AppBar(
@@ -146,7 +146,7 @@ class _HomeState extends State<Home> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CarouselWindow(),
+                  CarouselWindow(data: HomePage[0]),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -156,14 +156,14 @@ class _HomeState extends State<Home> {
                           height: 250,
                           child: ListView.builder(
                               scrollDirection: Axis.horizontal,
-                              itemCount: videoCardData.length,
+                              itemCount: HomePage[1].length,
                               itemBuilder: (context, index) {
                                 return videoCards(
-                                  imageUrl: "${videoCardData[index]['image']}",
-                                  name: "${videoCardData[index]['name']}",
-                                  subname: "${videoCardData[index]['subname']}",
-                                  hour: "${videoCardData[index]['hours']}",
-                                  mintes: "${videoCardData[index]['mintes']}",
+                                  imageUrl: "${HomePage[1][index]['image']}",
+                                  name: "${HomePage[1][index]['name']}",
+                                  subname: "${HomePage[1][index]['subname']}",
+                                  hour: "${HomePage[1][index]['hours']}",
+                                  mintes: "${HomePage[1][index]['mintes']}",
                                 );
                               }),
                         ),
@@ -221,13 +221,13 @@ class _HomeState extends State<Home> {
                               physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
-                              itemCount: popularCard.length,
+                              itemCount: HomePage[2].length,
                               itemBuilder: (context, index) {
                                 return poplurcards(
-                                    imageUrl: "${popularCard[index]['image']}",
-                                    name: "${popularCard[index]['name']}",
-                                    subname: "${popularCard[index]['subname']}",
-                                    time: popularCard[index]['time']);
+                                    imageUrl: "${HomePage[2][index]['image']}",
+                                    name: "${HomePage[2][index]['name']}",
+                                    subname: "${HomePage[2][index]['subname']}",
+                                    time: HomePage[2][index]['time']);
                               },
                             ),
                           ),

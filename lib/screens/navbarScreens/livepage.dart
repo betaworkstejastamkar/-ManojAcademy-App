@@ -1,24 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-List liveCardsData = [
-  {
-    'title': 'Chapter 6  - Operations on Vectors',
-    'subject': 'Maths',
-    'date': '28th April, 2022',
-    'startTime': '3:00pm',
-    'endTime': '4:00pm',
-    'lecturer': 'Sheetal Rana Maam'
-  },
-  {
-    'title': 'Chapter 8 - A Game of Chance',
-    'subject': 'English',
-    'date': '29th April, 2022',
-    'startTime': '1:00pm',
-    'endTime': '2:00pm',
-    'lecturer': 'Jyostna Maam'
-  },
-];
+import 'package:manojacademy/api/getlivelecture.dart';
 
 class LivePage extends StatefulWidget {
   const LivePage({Key? key}) : super(key: key);
@@ -27,41 +9,67 @@ class LivePage extends StatefulWidget {
   State<LivePage> createState() => _LivePageState();
 }
 
+var liveCardsData = [];
+
 class _LivePageState extends State<LivePage> {
+  var apiCall;
+  @override
+  void initState() {
+    apiCall = getLiveLecData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        title: Row(
-          children: [
-            SvgPicture.asset('icons/livelecturereddot.svg'),
-            const SizedBox(
-              width: 10,
+    return FutureBuilder(
+      future: apiCall,
+      builder: (context, snapshot) {
+        if (snapshot.hasData && snapshot.data != null) {
+          liveCardsData = snapshot.data as List<dynamic>;
+          print(liveCardsData);
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Theme.of(context).primaryColor,
+              title: Row(
+                children: [
+                  SvgPicture.asset('icons/livelecturereddot.svg'),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  const Text('Live Sessions')
+                ],
+              ),
+              leading: const Text(''),
             ),
-            const Text('Live Sessions')
-          ],
-        ),
-        leading: const Text(''),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: ListView.builder(
-            itemCount: liveCardsData.length,
-            itemBuilder: (context, index) {
-              return liveCards(
-                  title: '${liveCardsData[index]['title']}',
-                  subject: '${liveCardsData[index]['subject']}',
-                  date: '${liveCardsData[index]['date']}',
-                  startTime: '${liveCardsData[index]['startTime']}',
-                  endTime: '${liveCardsData[index]['endTime']}',
-                  lecturer: '${liveCardsData[index]['lecturer']}',
-                  width: width,
-                  height: height);
-            }),
-      ),
+            body: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ListView.builder(
+                  itemCount: liveCardsData[0].length,
+                  itemBuilder: (context, index) {
+                    return liveCards(
+                        title: '${liveCardsData[0][index]['title']}',
+                        subject: '${liveCardsData[0][index]['subject']}',
+                        date: '${liveCardsData[0][index]['date']}',
+                        startTime: '${liveCardsData[0][index]['startTime']}',
+                        endTime: '${liveCardsData[0][index]['endTime']}',
+                        lecturer: '${liveCardsData[0][index]['lecturer']}',
+                        width: width,
+                        height: height);
+                  }),
+            ),
+          );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error}');
+        }
+
+        // By default, show a loading spinner.
+        return Center(
+            child: CircularProgressIndicator(
+          color: Theme.of(context).primaryColor,
+        ));
+      },
     );
   }
 }
