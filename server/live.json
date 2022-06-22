@@ -1,0 +1,20 @@
+{
+    "Live": [
+        {
+            "title": "Chapter 6  - Operations on Vectors",
+            "subject": "Maths",
+            "date": "28th April, 2022",
+            "startTime": "3:00pm",
+            "endTime": "4:00pm",
+            "lecturer": "Sheetal Rana Maam"
+        },
+        {
+            "title": "Chapter 8 - A Game of Chance",
+            "subject": "English",
+            "date": "29th April, 2022",
+            "startTime": "1:00pm",
+            "endTime": "2:00pm",
+            "lecturer": "Jyostna Maam"
+        }
+    ]
+}

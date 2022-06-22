@@ -1,0 +1,29 @@
+{
+    "CarouselImages": [
+        "assets/carousalbg (2).png",
+        "assets/carousalbg.png"
+    ],
+    "ContinueWatching": [
+        {
+            "image": "assets/carousalbg (2).png",
+            "name": "Stone age man",
+            "subname": "History",
+            "hours": "2",
+            "mintes": "30"
+        },
+        {
+            "image": "assets/carousalbg (2).png",
+            "name": "How things work",
+            "subname": "Science",
+            "hours": "2",
+            "mintes": "27"
+        },
+        {
+            "image": "assets/carousalbg (2).png",
+            "name": "The Power of G",
+            "subname": "Science",
+            "hours": "2",
+            "mintes": "40"
+        }
+    ]
+}

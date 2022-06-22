@@ -119,7 +119,7 @@ class _TestResultPageState extends State<TestResultPage> {
           itemBuilder: (context, index) {
             return subjectTitle(
                 name: "${testReusltData[index]['name']}",
-                resultdata: testReusltData[index]!['testdata']);
+                resultdata: testReusltData[index]['testdata']);
           },
         ),
       ),

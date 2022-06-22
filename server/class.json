@@ -1,130 +1,154 @@
 {
-    "Class-6": [
-        {
-            "Popular": [
-                {
-                    "image": "assets/bluebox.png",
-                    "subname": "Science",
-                    "name": "The Living Organisms and their Surrounding",
-                    "time": "1:24"
-                },
-                {
-                    "image": "assets/greenbox.png",
-                    "subname": "Science",
-                    "name": "Weather and Climate",
-                    "time": "0:56"
-                },
-                {
-                    "image": "assets/pinkbox.png",
-                    "subname": "Geography",
-                    "name": "The Living Organisms and their Surrounding",
-                    "time": "1:20"
-                },
-                {
-                    "image": "assets/yellowbox.png",
-                    "subname": "Science",
-                    "name": "Weather and Climate",
-                    "time": "2:24"
+    "Class-6": {
+        "Popular": [
+            {
+                "image": "assets/bluebox.png",
+                "subname": "Science",
+                "name": "The Living Organisms and their Surrounding",
+                "time": "1:24"
+            },
+            {
+                "image": "assets/greenbox.png",
+                "subname": "Science",
+                "name": "Weather and Climate",
+                "time": "0:56"
+            },
+            {
+                "image": "assets/pinkbox.png",
+                "subname": "Geography",
+                "name": "The Living Organisms and their Surrounding",
+                "time": "1:20"
+            },
+            {
+                "image": "assets/yellowbox.png",
+                "subname": "Science",
+                "name": "Weather and Climate",
+                "time": "2:24"
+            }
+        ],
+        "Subject": [
+            {
+                "English": {
+                    "Chapters": [
+                        {
+                            "ChapterNo": 0,
+                            "name": "Demo",
+                            "video": 1
+                        },
+                        {
+                            "ChapterNo": 1,
+                            "name": "A Letter to God",
+                            "video": 3
+                        },
+                        {
+                            "ChapterNo": 2,
+                            "name": "Nelson Mandela: Long Walk to Freedom",
+                            "video": 2
+                        },
+                        {
+                            "ChapterNo": 3,
+                            "name": "Two Stories about Flying",
+                            "video": 5
+                        },
+                        {
+                            "ChapterNo": 4,
+                            "name": "From the Diary of Anne Frank",
+                            "video": 2
+                        }
+                    ]
                 }
-            ],
-            "Subject": [
-                {
-                    "English": {
-                        "Chapters": [
-                            {
-                                "ChapterNo": 0,
-                                "name": "Demo",
-                                "video": 1
-                            },
-                            {
-                                "ChapterNo": 1,
-                                "name": "A Letter to God",
-                                "video": 3
-                            },
-                            {
-                                "ChapterNo": 2,
-                                "name": "Nelson Mandela: Long Walk to Freedom",
-                                "video": 2
-                            },
-                            {
-                                "ChapterNo": 3,
-                                "name": "Two Stories about Flying",
-                                "video": 5
-                            },
-                            {
-                                "ChapterNo": 4,
-                                "name": "From the Diary of Anne Frank",
-                                "video": 2
-                            }
-                        ]
-                    }
-                },
-                {
-                    "Maths": {
-                        "Chapters": [
-                            {
-                                "ChapterNo": 0,
-                                "name": "Demo",
-                                "video": 1
-                            },
-                            {
-                                "ChapterNo": 1,
-                                "name": "Real Numbers",
-                                "video": 3
-                            },
-                            {
-                                "ChapterNo": 2,
-                                "name": "Polynomials",
-                                "video": 2
-                            },
-                            {
-                                "ChapterNo": 3,
-                                "name": "Pair of Linear Equations in Two Variables",
-                                "video": 5
-                            },
-                            {
-                                "ChapterNo": 4,
-                                "name": "Quadratic Equations",
-                                "video": 2
-                            }
-                        ]
-                    }
-                },
-                {
-                    "Science": {
-                        "Chapters": [
-                            {
-                                "ChapterNo": 0,
-                                "name": "Demo",
-                                "video": 1
-                            },
-                            {
-                                "ChapterNo": 1,
-                                "name": "Chemical reactions and equations",
-                                "video": 3
-                            },
-                            {
-                                "ChapterNo": 2,
-                                "name": "Acids, bases and salt",
-                                "video": 2
-                            },
-                            {
-                                "ChapterNo": 3,
-                                "name": "Metals and Non-metals",
-                                "video": 5
-                            },
-                            {
-                                "ChapterNo": 4,
-                                "name": "Carbon and its Compounds",
-                                "video": 2
-                            }
-                        ]
-                    }
+            },
+            {
+                "Maths": {
+                    "Chapters": [
+                        {
+                            "ChapterNo": 0,
+                            "name": "Demo",
+                            "video": 1
+                        },
+                        {
+                            "ChapterNo": 1,
+                            "name": "Real Numbers",
+                            "video": 3
+                        },
+                        {
+                            "ChapterNo": 2,
+                            "name": "Polynomials",
+                            "video": 2
+                        },
+                        {
+                            "ChapterNo": 3,
+                            "name": "Pair of Linear Equations in Two Variables",
+                            "video": 5
+                        },
+                        {
+                            "ChapterNo": 4,
+                            "name": "Quadratic Equations",
+                            "video": 2
+                        }
+                    ]
                 }
-            ]
-        }
-    ],
+            },
+            {
+                "Science": {
+                    "Chapters": [
+                        {
+                            "ChapterNo": 0,
+                            "name": "Demo",
+                            "video": 1
+                        },
+                        {
+                            "ChapterNo": 1,
+                            "name": "Chemical reactions and equations",
+                            "video": 3
+                        },
+                        {
+                            "ChapterNo": 2,
+                            "name": "Acids, bases and salt",
+                            "video": 2
+                        },
+                        {
+                            "ChapterNo": 3,
+                            "name": "Metals and Non-metals",
+                            "video": 5
+                        },
+                        {
+                            "ChapterNo": 4,
+                            "name": "Carbon and its Compounds",
+                            "video": 2
+                        }
+                    ]
+                }
+            }
+        ]
+    },
     "Class-7": {
+        "Popular": [
+            {
+                "image": "assets/bluebox.png",
+                "subname": "Science",
+                "name": "The Living Organisms and their Surrounding",
+                "time": "1:24"
+            },
+            {
+                "image": "assets/greenbox.png",
+                "subname": "Science",
+                "name": "Weather and Climate",
+                "time": "0:56"
+            },
+            {
+                "image": "assets/pinkbox.png",
+                "subname": "Geography",
+                "name": "The Living Organisms and their Surrounding",
+                "time": "1:20"
+            },
+            {
+                "image": "assets/yellowbox.png",
+                "subname": "Science",
+                "name": "Weather and Climate",
+                "time": "2:24"
+            }
+        ],
         "Subject": [
             {
                 "English": {
