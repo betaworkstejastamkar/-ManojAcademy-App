@@ -12,7 +12,7 @@ class LivePage extends StatefulWidget {
 var liveCardsData = [];
 
 class _LivePageState extends State<LivePage> {
-  var apiCall;
+  dynamic apiCall;
   @override
   void initState() {
     apiCall = getLiveLecData();
@@ -28,7 +28,7 @@ class _LivePageState extends State<LivePage> {
       builder: (context, snapshot) {
         if (snapshot.hasData && snapshot.data != null) {
           liveCardsData = snapshot.data as List<dynamic>;
-          print(liveCardsData);
+
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Theme.of(context).primaryColor,

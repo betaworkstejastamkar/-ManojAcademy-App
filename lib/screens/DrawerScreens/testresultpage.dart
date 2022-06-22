@@ -12,7 +12,7 @@ class TestResultPage extends StatefulWidget {
 }
 
 class _TestResultPageState extends State<TestResultPage> {
-  var apiCall;
+  dynamic apiCall;
   @override
   void initState() {
     apiCall = getTestResult();

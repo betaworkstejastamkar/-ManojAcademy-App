@@ -1,32 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:manojacademy/api/getuserdata.dart';
 
-List lectureData = [
-  {
-    'image': 'assets/bluebox.png',
-    'name': 'Maths',
-    'chapter': 16,
-    'totalvideo': 100,
-    'status': 'On chapter 2',
-    'completed': 20,
-  },
-  {
-    'image': 'assets/greenbox.png',
-    'name': 'English',
-    'chapter': 12,
-    'totalvideo': 90,
-    'status': 'On chapter 2',
-    'completed': 0,
-  },
-  {
-    'image': 'assets/greybox.png',
-    'name': 'History',
-    'chapter': 14,
-    'totalvideo': 120,
-    'status': 'On chapter 2',
-    'completed': 50,
-  },
-];
+List lectureData = [];
 
 class MylearningPage extends StatefulWidget {
   const MylearningPage({Key? key}) : super(key: key);
@@ -36,65 +12,90 @@ class MylearningPage extends StatefulWidget {
 }
 
 class _MylearningPageState extends State<MylearningPage> {
+  dynamic apiCall;
+
+  @override
+  void initState() {
+    apiCall = getUserLecture();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 100,
-        leading: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: SvgPicture.asset('icons/arrow-left.svg'),
-            style: ButtonStyle(
-                elevation: MaterialStateProperty.all(0),
-                backgroundColor: MaterialStateProperty.all(Colors.white)),
-          ),
-        ),
-        elevation: 1,
-        title: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-          child: Row(
-            children: [
-              SvgPicture.asset('icons/book.svg'),
-              const SizedBox(
-                width: 5,
+    return FutureBuilder(
+      future: apiCall,
+      builder: (context, snapshot) {
+        if (snapshot.hasData && snapshot.data != null) {
+          lectureData = snapshot.data as List<dynamic>;
+
+          return Scaffold(
+            appBar: AppBar(
+              toolbarHeight: 100,
+              leading: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: SvgPicture.asset('icons/arrow-left.svg'),
+                  style: ButtonStyle(
+                      elevation: MaterialStateProperty.all(0),
+                      backgroundColor: MaterialStateProperty.all(Colors.white)),
+                ),
               ),
-              const Text('My Learning'),
-            ],
-          ),
-        ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        // centerTitle: true,
-      ),
-      backgroundColor: Colors.white,
-      body: ListView(children: [
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: SizedBox(
-            height: height,
-            child: ListView.builder(
-              itemCount: lectureData.length,
-              itemBuilder: (context, index) {
-                return lectureCards(
-                    image: "${lectureData[index]['image']}",
-                    name: "${lectureData[index]['name']}",
-                    chapter: "${lectureData[index]['chapter']}",
-                    video: "${lectureData[index]['totalvideo']}",
-                    status: "${lectureData[index]['status']}",
-                    precent: lectureData[index]['completed'],
-                    width: width,
-                    height: height);
-              },
+              elevation: 1,
+              title: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+                child: Row(
+                  children: [
+                    SvgPicture.asset('icons/book.svg'),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    const Text('My Learning'),
+                  ],
+                ),
+              ),
+              backgroundColor: Colors.white,
+              foregroundColor: Colors.black,
+              // centerTitle: true,
             ),
-          ),
-        )
-      ]),
+            backgroundColor: Colors.white,
+            body: ListView(children: [
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: SizedBox(
+                  height: height,
+                  child: ListView.builder(
+                    itemCount: lectureData[0].length,
+                    itemBuilder: (context, index) {
+                      return lectureCards(
+                          image: "${lectureData[0][index]['image']}",
+                          name: "${lectureData[0][index]['name']}",
+                          chapter: "${lectureData[0][index]['chapter']}",
+                          video: "${lectureData[0][index]['totalvideo']}",
+                          status: "${lectureData[0][index]['status']}",
+                          precent: lectureData[0][index]['completed'],
+                          width: width,
+                          height: height);
+                    },
+                  ),
+                ),
+              )
+            ]),
+          );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error}');
+        }
+
+        // By default, show a loading spinner.
+        return Center(
+            child: CircularProgressIndicator(
+          color: Theme.of(context).primaryColor,
+        ));
+      },
     );
   }
 }
