@@ -1,72 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:manojacademy/api/getlivelecture.dart';
 
-List testReusltData = [
-  {
-    'name': 'Maths',
-    'testdata': [
-      {
-        'chapter': 2,
-        'Question': 50,
-        'R_Answer': 33,
-        'W_Answer': 17,
-        'completed': 45,
-      },
-      {
-        'chapter': 2,
-        'Question': 50,
-        'R_Answer': 33,
-        'W_Answer': 17,
-        'completed': 60,
-      }
-    ],
-  },
-  {
-    'name': 'History',
-    'testdata': [
-      {
-        'chapter': 2,
-        'Question': 50,
-        'R_Answer': 33,
-        'W_Answer': 17,
-        'completed': 45,
-      },
-      {
-        'chapter': 2,
-        'Question': 50,
-        'R_Answer': 33,
-        'W_Answer': 17,
-        'completed': 60,
-      },
-      {
-        'chapter': 2,
-        'Question': 50,
-        'R_Answer': 33,
-        'W_Answer': 17,
-        'completed': 80,
-      }
-    ]
-  },
-  {
-    'name': 'English',
-    'testdata': [
-      {
-        'chapter': 2,
-        'Question': 50,
-        'R_Answer': 33,
-        'W_Answer': 17,
-        'completed': 90,
-      },
-      {
-        'chapter': 2,
-        'Question': 50,
-        'R_Answer': 33,
-        'W_Answer': 17,
-        'completed': 25,
-      }
-    ]
-  },
-];
+List testReusltData = [];
 
 class TestResultPage extends StatefulWidget {
   const TestResultPage({Key? key}) : super(key: key);
@@ -76,53 +12,77 @@ class TestResultPage extends StatefulWidget {
 }
 
 class _TestResultPageState extends State<TestResultPage> {
+  var apiCall;
+  @override
+  void initState() {
+    apiCall = getTestResult();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 100,
-        elevation: 1,
-        leading: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: SvgPicture.asset('icons/arrow-left.svg'),
-            style: ButtonStyle(
-                elevation: MaterialStateProperty.all(0),
-                backgroundColor: MaterialStateProperty.all(Colors.white)),
-          ),
-        ),
-        title: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SvgPicture.asset('icons/bar-chart.svg'),
-              const SizedBox(
-                width: 5,
+    return FutureBuilder(
+      future: apiCall,
+      builder: (context, snapshot) {
+        if (snapshot.hasData && snapshot.data != null) {
+          testReusltData = snapshot.data as List<dynamic>;
+
+          return Scaffold(
+            appBar: AppBar(
+              toolbarHeight: 100,
+              elevation: 1,
+              leading: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: SvgPicture.asset('icons/arrow-left.svg'),
+                  style: ButtonStyle(
+                      elevation: MaterialStateProperty.all(0),
+                      backgroundColor: MaterialStateProperty.all(Colors.white)),
+                ),
               ),
-              const Text('Test result'),
-            ],
-          ),
-        ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        // centerTitle: true,
-      ),
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-        child: ListView.builder(
-          itemCount: testReusltData.length,
-          itemBuilder: (context, index) {
-            return subjectTitle(
-                name: "${testReusltData[index]['name']}",
-                resultdata: testReusltData[index]['testdata']);
-          },
-        ),
-      ),
+              title: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SvgPicture.asset('icons/bar-chart.svg'),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    const Text('Test result'),
+                  ],
+                ),
+              ),
+              backgroundColor: Colors.white,
+              foregroundColor: Colors.black,
+              // centerTitle: true,
+            ),
+            backgroundColor: Colors.white,
+            body: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+              child: ListView.builder(
+                itemCount: testReusltData[0].length,
+                itemBuilder: (context, index) {
+                  return subjectTitle(
+                      name: "${testReusltData[0][index]['name']}",
+                      resultdata: testReusltData[0][index]['testdata']);
+                },
+              ),
+            ),
+          );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error}');
+        }
+
+        // By default, show a loading spinner.
+        return Center(
+            child: CircularProgressIndicator(
+          color: Theme.of(context).primaryColor,
+        ));
+      },
     );
   }
 }

@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:manojacademy/screens/navbarScreens/home.dart';
 
 class CarouselWindow extends StatefulWidget {
-  const CarouselWindow({Key? key}) : super(key: key);
+  final List data;
+  const CarouselWindow({Key? key, required this.data}) : super(key: key);
 
   @override
   State<CarouselWindow> createState() => _CarouselWindowState();
@@ -38,7 +39,7 @@ class _CarouselWindowState extends State<CarouselWindow> {
                     _current = index;
                   });
                 }),
-            items: imageDataItems.map((i) {
+            items: widget.data.map((i) {
               return Builder(
                 builder: (BuildContext context) {
                   return ClipRRect(
@@ -59,7 +60,7 @@ class _CarouselWindowState extends State<CarouselWindow> {
           cornerRadius: 10,
           color: const Color.fromRGBO(0, 0, 0, 0.6),
           activeColor: const Color.fromRGBO(0, 129, 100, 1),
-          count: imageDataItems.length,
+          count: widget.data.length,
           index: _current,
         ),
       ],
