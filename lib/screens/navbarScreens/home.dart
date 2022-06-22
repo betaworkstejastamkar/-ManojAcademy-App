@@ -1,8 +1,8 @@
 import 'package:bottom_picker/bottom_picker.dart';
 import 'package:bottom_picker/resources/arrays.dart';
-import 'package:dio/dio.dart' show Dio;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:manojacademy/api/getclassdata.dart';
 import 'package:manojacademy/data/studentdata.dart';
 import 'package:manojacademy/screens/subScreens/notificationscreen.dart';
 import 'package:manojacademy/widgets/carouselwindow.dart';
@@ -11,6 +11,7 @@ import 'package:manojacademy/widgets/popularcards.dart';
 import 'package:manojacademy/widgets/subjectcards.dart';
 import 'package:manojacademy/widgets/videocards.dart';
 
+var popularCard = [];
 List imageDataItems = [
   'assets/carousalbg (2).png',
   'assets/carousalbg.png',
@@ -48,18 +49,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final Dio dio = Dio();
-  Future<bool> fetchAlbum() async {
-    try {
-      var response = await dio
-          .get('https://run.mocky.io/v3/da96d92c-09b6-4b33-844d-0dcd584a1e1e');
-      // print(response.data);
-    } catch (e) {
-      print(e);
-    }
-    return true;
-  }
-
   void openPickerWithCustomPickerTextStyle(BuildContext context) {
     BottomPicker(
       height: 400,
@@ -86,156 +75,180 @@ class _HomeState extends State<Home> {
     ).show(context);
   }
 
+  var classData;
+
+  @override
+  void initState() {
+    classData = fetchPopularCardData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    fetchAlbum();
     final GlobalKey<ScaffoldState> _key = GlobalKey();
     String dropdownvalue = studentClass;
-    return Scaffold(
-      key: _key,
-      appBar: AppBar(
-        actions: [
-          InkWell(
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const NotificationScreen()));
-            },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: SvgPicture.asset('icons/bell.svg'),
-            ),
-          )
-        ],
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        title: InkWell(
-          onTap: () => openPickerWithCustomPickerTextStyle(context),
-          child: Center(
-            child: Wrap(
-              crossAxisAlignment: WrapCrossAlignment.start,
-              children: [
-                Text(dropdownvalue),
-                const SizedBox(
-                  width: 5,
-                ),
-                const RotatedBox(
-                  quarterTurns: 3,
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: 18,
-                    color: Colors.black,
+    print(classData);
+    return FutureBuilder(
+      future: classData,
+      builder: (context, snapshot) {
+        if (snapshot.hasData && snapshot.data != null) {
+          popularCard = snapshot.data as List<dynamic>;
+          return Scaffold(
+            key: _key,
+            appBar: AppBar(
+              actions: [
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const NotificationScreen()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: SvgPicture.asset('icons/bell.svg'),
                   ),
                 )
               ],
-            ),
-          ),
-        ),
-        centerTitle: true,
-        leading: IconButton(
-            icon: SvgPicture.asset('icons/align-left.svg'),
-            onPressed: () {
-              _key.currentState?.openDrawer();
-              // Scaffold.of(context).openDrawer();
-            }),
-      ),
-      drawer: const SideBar(),
-      body: SingleChildScrollView(
-        physics: const ScrollPhysics(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CarouselWindow(),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-                  child: SizedBox(
-                    height: 250,
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: videoCardData.length,
-                        itemBuilder: (context, index) {
-                          return videoCards(
-                            imageUrl: "${videoCardData[index]['image']}",
-                            name: "${videoCardData[index]['name']}",
-                            subname: "${videoCardData[index]['subname']}",
-                            hour: "${videoCardData[index]['hours']}",
-                            mintes: "${videoCardData[index]['mintes']}",
-                          );
-                        }),
-                  ),
-                ),
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                  child: Text(
-                    "Categories",
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: SizedBox(
-                    height: 140,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: subjectCardsBg.length,
-                      itemBuilder: (context, index) {
-                        return subjectcards(
-                            imageurl: "${subjectCardsBg[index]['image']}",
-                            name: "${subjectCardsBg[index]['name']}",
-                            width: 154,
-                            hegiht: 116);
-                      },
-                    ),
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(20, 20, 0, 10),
-                      child: Text(
-                        "Popular Courses",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black),
+              backgroundColor: Colors.white,
+              foregroundColor: Colors.black,
+              title: InkWell(
+                onTap: () => openPickerWithCustomPickerTextStyle(context),
+                child: Center(
+                  child: Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.start,
+                    children: [
+                      Text(dropdownvalue),
+                      const SizedBox(
+                        width: 5,
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: popularcardData.length,
-                        itemBuilder: (context, index) {
-                          return poplurcards(
-                              imageUrl: "${popularcardData[index]['image']}",
-                              name: "${popularcardData[index]['name']}",
-                              subname: "${popularcardData[index]['subname']}",
-                              time: popularcardData[index]['time']);
-                        },
-                      ),
-                    ),
-                  ],
+                      const RotatedBox(
+                        quarterTurns: 3,
+                        child: Icon(
+                          Icons.arrow_back_ios,
+                          size: 18,
+                          color: Colors.black,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ],
+              ),
+              centerTitle: true,
+              leading: IconButton(
+                  icon: SvgPicture.asset('icons/align-left.svg'),
+                  onPressed: () {
+                    _key.currentState?.openDrawer();
+                    // Scaffold.of(context).openDrawer();
+                  }),
             ),
-          ],
-        ),
-      ),
+            drawer: const SideBar(),
+            body: SingleChildScrollView(
+              physics: const ScrollPhysics(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const CarouselWindow(),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                        child: SizedBox(
+                          height: 250,
+                          child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: videoCardData.length,
+                              itemBuilder: (context, index) {
+                                return videoCards(
+                                  imageUrl: "${videoCardData[index]['image']}",
+                                  name: "${videoCardData[index]['name']}",
+                                  subname: "${videoCardData[index]['subname']}",
+                                  hour: "${videoCardData[index]['hours']}",
+                                  mintes: "${videoCardData[index]['mintes']}",
+                                );
+                              }),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: Text(
+                          "Categories",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: SizedBox(
+                          height: 140,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: subjectCardsBg.length,
+                            itemBuilder: (context, index) {
+                              return subjectcards(
+                                  imageurl: "${subjectCardsBg[index]['image']}",
+                                  name: "${subjectCardsBg[index]['name']}",
+                                  width: 154,
+                                  hegiht: 116);
+                            },
+                          ),
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(20, 20, 0, 10),
+                            child: Text(
+                              "Popular Courses",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: ListView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: popularCard.length,
+                              itemBuilder: (context, index) {
+                                return poplurcards(
+                                    imageUrl: "${popularCard[index]['image']}",
+                                    name: "${popularCard[index]['name']}",
+                                    subname: "${popularCard[index]['subname']}",
+                                    time: popularCard[index]['time']);
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error}');
+        }
+
+        // By default, show a loading spinner.
+        return Center(
+            child: CircularProgressIndicator(
+          color: Theme.of(context).primaryColor,
+        ));
+      },
     );
   }
 }

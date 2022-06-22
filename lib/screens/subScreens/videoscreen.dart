@@ -1,7 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:manojacademy/api/getstroage.dart';
 import 'package:manojacademy/widgets/testchapter.dart';
@@ -200,8 +197,8 @@ class _VideoScreenState extends State<VideoScreen>
                             horizontal: 10, vertical: 0),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Padding(
+                          children: const [
+                            Padding(
                               padding: EdgeInsets.all(3.0),
                               child: Text(
                                 'History',
@@ -212,14 +209,14 @@ class _VideoScreenState extends State<VideoScreen>
                                 ),
                               ),
                             ),
-                            const Padding(
+                            Padding(
                               padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
                               child: Icon(
                                 Icons.alarm,
                                 color: Color.fromRGBO(165, 153, 153, 1),
                               ),
                             ),
-                            const Padding(
+                            Padding(
                               padding: EdgeInsets.all(5.0),
                               child: Text(
                                 '2m 05s',
