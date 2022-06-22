@@ -1,13 +1,16 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:carousel_slider/carousel_state.dart';
+import 'package:bottom_picker/bottom_picker.dart';
+import 'package:bottom_picker/resources/arrays.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:manojacademy/data/studentdata.dart';
 import 'package:manojacademy/screens/subScreens/notificationscreen.dart';
+import 'package:manojacademy/widgets/carouselwindow.dart';
 import 'package:manojacademy/widgets/drawer.dart';
 import 'package:manojacademy/widgets/popularcards.dart';
 import 'package:manojacademy/widgets/subjectcards.dart';
 import 'package:manojacademy/widgets/videocards.dart';
+import 'dart:io';
 
 List imageDataItems = [
   'assets/carousalbg (2).png',
@@ -46,13 +49,51 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _current = 0;
+  final Dio dio = Dio();
+  var client = HttpClient();
+  final url = Uri.parse(
+      'https://firebasestorage.googleapis.com/v0/b/manjoacadmey.appspot.com/o/db.json?alt=media&token=14bf7ac6-eabf-44bf-96d0-c2463b6a12bb');
+  Future<bool> fetchAlbum() async {
+    try {
+      var response = await dio.get('https://1buymeds.com/tejas.json');
+      print(response.data['imageDataItems'][1]);
+    } catch (e) {
+      print(e);
+    }
+    return true;
+  }
+
+  void openPickerWithCustomPickerTextStyle(BuildContext context) {
+    BottomPicker(
+      height: 400,
+      dismissable: true,
+      items: [for (int i = 0; i < classes.length; i++) Text(classes[i])],
+      title: '',
+      pickerTextStyle: const TextStyle(
+          color: Colors.black, fontWeight: FontWeight.bold, fontSize: 24),
+      onSubmit: (index) {
+        setState(() {
+          studentClass = classes[index];
+        });
+      },
+      layoutOrientation: LAYOUT_ORIENTATION.rtl,
+      itemExtent: 30,
+      displayCloseIcon: false,
+      displayButtonIcon: false,
+      buttonSingleColor: Theme.of(context).primaryColor,
+      buttonText: 'ok',
+      buttonAlignement: MainAxisAlignment.end,
+      buttonTextStyle: const TextStyle(
+          fontSize: 12, fontWeight: FontWeight.w500, color: Colors.white),
+      closeIconColor: Colors.red,
+    ).show(context);
+  }
+
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    fetchAlbum();
     final GlobalKey<ScaffoldState> _key = GlobalKey();
-    // final CarouselState key1 = GlobalKey();
+    String dropdownvalue = studentClass;
     return Scaffold(
       key: _key,
       appBar: AppBar(
@@ -70,12 +111,33 @@ class _HomeState extends State<Home> {
         ],
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
-        title: const Text('Class 6'),
+        title: InkWell(
+          onTap: () => openPickerWithCustomPickerTextStyle(context),
+          child: Center(
+            child: Wrap(
+              crossAxisAlignment: WrapCrossAlignment.start,
+              children: [
+                Text(dropdownvalue),
+                const SizedBox(
+                  width: 5,
+                ),
+                const RotatedBox(
+                  quarterTurns: 3,
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    size: 18,
+                    color: Colors.black,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
         centerTitle: true,
         leading: IconButton(
             icon: SvgPicture.asset('icons/align-left.svg'),
             onPressed: () {
-              _key.currentState!.openDrawer();
+              _key.currentState?.openDrawer();
               // Scaffold.of(context).openDrawer();
             }),
       ),
@@ -85,54 +147,10 @@ class _HomeState extends State<Home> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const CarouselWindow(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 10, 20, 4),
-                  child: CarouselSlider(
-                    key: null,
-                    options: CarouselOptions(
-                        height: width < 440 ? height / 5 : height / 3,
-                        aspectRatio: 16 / 9,
-                        viewportFraction: 1,
-                        initialPage: 0,
-                        autoPlay: true,
-                        autoPlayInterval: const Duration(seconds: 10),
-                        autoPlayAnimationDuration:
-                            const Duration(milliseconds: 1000),
-                        autoPlayCurve: Curves.fastOutSlowIn,
-                        enlargeCenterPage: true,
-                        scrollDirection: Axis.horizontal,
-                        onPageChanged: (index, reason) {
-                          setState(() {
-                            _current = index;
-                          });
-                        }),
-                    items: imageDataItems.map((i) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return ClipRRect(
-                              borderRadius: BorderRadius.circular(15),
-                              child: Image.asset(
-                                i,
-                                fit: BoxFit.contain,
-                                width: width,
-                              ));
-                        },
-                      );
-                    }).toList(),
-                  ),
-                ),
-                CarouselIndicator(
-                  height: 10,
-                  width: 10,
-                  cornerRadius: 10,
-                  color: const Color.fromRGBO(0, 0, 0, 0.6),
-                  activeColor: const Color.fromRGBO(0, 129, 100, 1),
-                  count: imageDataItems.length,
-                  index: _current,
-                ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
                   child: SizedBox(

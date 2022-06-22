@@ -37,7 +37,6 @@ class _TestChapterPageState extends State<TestChapterPage> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -113,10 +112,11 @@ class _TestChapterPageState extends State<TestChapterPage> {
                     itemCount: chapters.length,
                     itemBuilder: (context, index) {
                       return testCard(
-                          index: index + 1,
-                          name: "${chapters[index]['name']}",
-                          question: "${chapters[index]['question']}",
-                          precent: "${chapters[index]['completed']}");
+                        index: index + 1,
+                        name: chapters[index]['name'],
+                        question: chapters[index]['question'],
+                        precent: chapters[index]['completed'],
+                      );
                     },
                   ),
                 ),

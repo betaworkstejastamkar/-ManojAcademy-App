@@ -153,16 +153,20 @@ Widget dowloadedVideoCards({imageurl, name, data}) {
           );
         },
         child: Card(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           elevation: 4,
           child: Row(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: SvgPicture.asset(
-                  imageurl,
-                  width: 50,
-                  height: 80,
-                  fit: BoxFit.cover,
+              SizedBox(
+                width: 100,
+                height: 85,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: SvgPicture.asset(
+                    imageurl,
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
               const SizedBox(
@@ -227,7 +231,9 @@ class _OfflineVideosState extends State<OfflineVideos> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SvgPicture.asset('icons/download.svg'),
+              SvgPicture.asset(
+                'icons/download.svg',
+              ),
               const SizedBox(
                 width: 5,
               ),
@@ -242,6 +248,7 @@ class _OfflineVideosState extends State<OfflineVideos> {
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: ListView.builder(
+          shrinkWrap: true,
           itemCount: widget.data.length,
           itemBuilder: (context, index) => poplurcards(
               time: widget.data[index]['time'],

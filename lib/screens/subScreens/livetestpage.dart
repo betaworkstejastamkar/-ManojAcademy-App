@@ -46,8 +46,12 @@ List testData = [
 
 class LiveTestPage extends StatefulWidget {
   final String chapterName;
-  final int timer;
-  const LiveTestPage({Key? key, required this.chapterName, required this.timer})
+  final int timer, chapNo;
+  const LiveTestPage(
+      {Key? key,
+      required this.chapterName,
+      required this.timer,
+      required this.chapNo})
       : super(key: key);
 
   @override
@@ -215,13 +219,13 @@ class _LiveTestPageState extends State<LiveTestPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'chap 1 - ${widget.chapterName}',
+                'chap ${widget.chapNo} - ${widget.chapterName}',
                 style: const TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w600,
                     fontSize: 16),
               ),
-              SizedBox(height: MediaQuery.of(context).size.width / 30),
+              const SizedBox(height: 10),
               Text(
                 '${testData.length} question | 30 minutes',
                 style: const TextStyle(

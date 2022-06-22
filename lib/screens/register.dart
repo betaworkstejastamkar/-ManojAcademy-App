@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:manojacademy/data/studentdata.dart';
 import 'package:manojacademy/screens/loginscreen.dart';
 import 'package:manojacademy/screens/navbarScreens/navbar.dart';
 
@@ -199,6 +200,8 @@ class _RegisterState extends State<Register> {
                       ),
                       TextButton(
                         onPressed: () {
+                          studentClass = dropdownvalue;
+                          Navigator.pop(context);
                           Navigator.push(
                               context,
                               MaterialPageRoute(

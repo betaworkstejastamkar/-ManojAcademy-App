@@ -1,0 +1,378 @@
+{
+    "Tests": {
+        "Class-6": {
+            "Subject": {
+                "English": [
+                    {
+                        "ChapterNo": 1,
+                        "name": "A Letter to God",
+                        "time": 60,
+                        "questions": {
+                            "questionNo": 3,
+                            "questions": [
+                                {
+                                    "marks": 2,
+                                    "question": "The famous Konark Sun temple was built by whom?",
+                                    "type": "mcq",
+                                    "Answers": [
+                                        "Narshimhadeva I",
+                                        "Angabhima deva I",
+                                        "Konkanivarman",
+                                        "Narsimhavarman II"
+                                    ]
+                                },
+                                {
+                                    "marks": 5,
+                                    "question": "In which state of India, the first Paleolithic site was discovered?",
+                                    "type": "short_answers",
+                                    "Answers": "In which state of India, the first Paleolithic site was discovered?"
+                                },
+                                {
+                                    "marks": 2,
+                                    "question": "In which state of India, the first Paleolithic site was discovered?",
+                                    "type": "short_answers",
+                                    "Answers": "In which state of India, the first Paleolithic site was discovered?"
+                                },
+                                {
+                                    "marks": 2,
+                                    "question": "The famous Konark Sun temple was built by whom?",
+                                    "type": "mcq",
+                                    "Answers": [
+                                        "Narshimhadeva I",
+                                        "Angabhima deva I",
+                                        "Konkanivarman",
+                                        "Narsimhavarman II"
+                                    ]
+                                }
+                            ]
+                        },
+                        "completed": 0
+                    },
+                    {
+                        "ChapterNo": 2,
+                        "name": "Nelson Mandela: Long Walk to Freedom",
+                        "video": 2,
+                        "time": 60,
+                        "completed": 0,
+                        "questions": {
+                            "questionNo": 3,
+                            "questions": [
+                                {
+                                    "marks": 2,
+                                    "question": "The famous Konark Sun temple was built by whom?",
+                                    "type": "mcq",
+                                    "Answers": [
+                                        "Narshimhadeva I",
+                                        "Angabhima deva I",
+                                        "Konkanivarman",
+                                        "Narsimhavarman II"
+                                    ]
+                                },
+                                {
+                                    "marks": 5,
+                                    "question": "In which state of India, the first Paleolithic site was discovered?",
+                                    "type": "short_answers",
+                                    "Answers": "In which state of India, the first Paleolithic site was discovered?"
+                                },
+                                {
+                                    "marks": 2,
+                                    "question": "In which state of India, the first Paleolithic site was discovered?",
+                                    "type": "short_answers",
+                                    "Answers": "In which state of India, the first Paleolithic site was discovered?"
+                                },
+                                {
+                                    "marks": 2,
+                                    "question": "The famous Konark Sun temple was built by whom?",
+                                    "type": "mcq",
+                                    "Answers": [
+                                        "Narshimhadeva I",
+                                        "Angabhima deva I",
+                                        "Konkanivarman",
+                                        "Narsimhavarman II"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "ChapterNo": 3,
+                        "name": "Two Stories about Flying",
+                        "video": 5,
+                        "completed": 0,
+                        "time": 60,
+                        "questions": {
+                            "questionNo": 3,
+                            "questions": [
+                                {
+                                    "marks": 2,
+                                    "question": "The famous Konark Sun temple was built by whom?",
+                                    "type": "mcq",
+                                    "Answers": [
+                                        "Narshimhadeva I",
+                                        "Angabhima deva I",
+                                        "Konkanivarman",
+                                        "Narsimhavarman II"
+                                    ]
+                                },
+                                {
+                                    "marks": 5,
+                                    "question": "In which state of India, the first Paleolithic site was discovered?",
+                                    "type": "short_answers",
+                                    "Answers": "In which state of India, the first Paleolithic site was discovered?"
+                                },
+                                {
+                                    "marks": 2,
+                                    "question": "In which state of India, the first Paleolithic site was discovered?",
+                                    "type": "short_answers",
+                                    "Answers": "In which state of India, the first Paleolithic site was discovered?"
+                                },
+                                {
+                                    "marks": 2,
+                                    "question": "The famous Konark Sun temple was built by whom?",
+                                    "type": "mcq",
+                                    "Answers": [
+                                        "Narshimhadeva I",
+                                        "Angabhima deva I",
+                                        "Konkanivarman",
+                                        "Narsimhavarman II"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "ChapterNo": 4,
+                        "name": "From the Diary of Anne Frank",
+                        "video": 2,
+                        "time": 60,
+                        "completed": 0,
+                        "questions": {
+                            "questionNo": 3,
+                            "questions": [
+                                {
+                                    "marks": 2,
+                                    "question": "The famous Konark Sun temple was built by whom?",
+                                    "type": "mcq",
+                                    "Answers": [
+                                        "Narshimhadeva I",
+                                        "Angabhima deva I",
+                                        "Konkanivarman",
+                                        "Narsimhavarman II"
+                                    ]
+                                },
+                                {
+                                    "marks": 5,
+                                    "question": "In which state of India, the first Paleolithic site was discovered?",
+                                    "type": "short_answers",
+                                    "Answers": "In which state of India, the first Paleolithic site was discovered?"
+                                },
+                                {
+                                    "marks": 2,
+                                    "question": "In which state of India, the first Paleolithic site was discovered?",
+                                    "type": "short_answers",
+                                    "Answers": "In which state of India, the first Paleolithic site was discovered?"
+                                },
+                                {
+                                    "marks": 2,
+                                    "question": "The famous Konark Sun temple was built by whom?",
+                                    "type": "mcq",
+                                    "Answers": [
+                                        "Narshimhadeva I",
+                                        "Angabhima deva I",
+                                        "Konkanivarman",
+                                        "Narsimhavarman II"
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "Science": [
+                    {
+                        "ChapterNo": 1,
+                        "name": "A Letter to God",
+                        "time": 60,
+                        "questions": {
+                            "questionNo": 3,
+                            "questions": [
+                                {
+                                    "marks": 2,
+                                    "question": "The famous Konark Sun temple was built by whom?",
+                                    "type": "mcq",
+                                    "Answers": [
+                                        "Narshimhadeva I",
+                                        "Angabhima deva I",
+                                        "Konkanivarman",
+                                        "Narsimhavarman II"
+                                    ]
+                                },
+                                {
+                                    "marks": 5,
+                                    "question": "In which state of India, the first Paleolithic site was discovered?",
+                                    "type": "short_answers",
+                                    "Answers": "In which state of India, the first Paleolithic site was discovered?"
+                                },
+                                {
+                                    "marks": 2,
+                                    "question": "In which state of India, the first Paleolithic site was discovered?",
+                                    "type": "short_answers",
+                                    "Answers": "In which state of India, the first Paleolithic site was discovered?"
+                                },
+                                {
+                                    "marks": 2,
+                                    "question": "The famous Konark Sun temple was built by whom?",
+                                    "type": "mcq",
+                                    "Answers": [
+                                        "Narshimhadeva I",
+                                        "Angabhima deva I",
+                                        "Konkanivarman",
+                                        "Narsimhavarman II"
+                                    ]
+                                }
+                            ]
+                        },
+                        "completed": 0
+                    },
+                    {
+                        "ChapterNo": 2,
+                        "name": "Nelson Mandela: Long Walk to Freedom",
+                        "video": 2,
+                        "time": 60,
+                        "completed": 0,
+                        "questions": {
+                            "questionNo": 3,
+                            "questions": [
+                                {
+                                    "marks": 2,
+                                    "question": "The famous Konark Sun temple was built by whom?",
+                                    "type": "mcq",
+                                    "Answers": [
+                                        "Narshimhadeva I",
+                                        "Angabhima deva I",
+                                        "Konkanivarman",
+                                        "Narsimhavarman II"
+                                    ]
+                                },
+                                {
+                                    "marks": 5,
+                                    "question": "In which state of India, the first Paleolithic site was discovered?",
+                                    "type": "short_answers",
+                                    "Answers": "In which state of India, the first Paleolithic site was discovered?"
+                                },
+                                {
+                                    "marks": 2,
+                                    "question": "In which state of India, the first Paleolithic site was discovered?",
+                                    "type": "short_answers",
+                                    "Answers": "In which state of India, the first Paleolithic site was discovered?"
+                                },
+                                {
+                                    "marks": 2,
+                                    "question": "The famous Konark Sun temple was built by whom?",
+                                    "type": "mcq",
+                                    "Answers": [
+                                        "Narshimhadeva I",
+                                        "Angabhima deva I",
+                                        "Konkanivarman",
+                                        "Narsimhavarman II"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "ChapterNo": 3,
+                        "name": "Two Stories about Flying",
+                        "video": 5,
+                        "completed": 0,
+                        "time": 60,
+                        "questions": {
+                            "questionNo": 3,
+                            "questions": [
+                                {
+                                    "marks": 2,
+                                    "question": "The famous Konark Sun temple was built by whom?",
+                                    "type": "mcq",
+                                    "Answers": [
+                                        "Narshimhadeva I",
+                                        "Angabhima deva I",
+                                        "Konkanivarman",
+                                        "Narsimhavarman II"
+                                    ]
+                                },
+                                {
+                                    "marks": 5,
+                                    "question": "In which state of India, the first Paleolithic site was discovered?",
+                                    "type": "short_answers",
+                                    "Answers": "In which state of India, the first Paleolithic site was discovered?"
+                                },
+                                {
+                                    "marks": 2,
+                                    "question": "In which state of India, the first Paleolithic site was discovered?",
+                                    "type": "short_answers",
+                                    "Answers": "In which state of India, the first Paleolithic site was discovered?"
+                                },
+                                {
+                                    "marks": 2,
+                                    "question": "The famous Konark Sun temple was built by whom?",
+                                    "type": "mcq",
+                                    "Answers": [
+                                        "Narshimhadeva I",
+                                        "Angabhima deva I",
+                                        "Konkanivarman",
+                                        "Narsimhavarman II"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "ChapterNo": 4,
+                        "name": "From the Diary of Anne Frank",
+                        "video": 2,
+                        "time": 60,
+                        "completed": 0,
+                        "questions": {
+                            "questionNo": 3,
+                            "questions": [
+                                {
+                                    "marks": 2,
+                                    "question": "The famous Konark Sun temple was built by whom?",
+                                    "type": "mcq",
+                                    "Answers": [
+                                        "Narshimhadeva I",
+                                        "Angabhima deva I",
+                                        "Konkanivarman",
+                                        "Narsimhavarman II"
+                                    ]
+                                },
+                                {
+                                    "marks": 5,
+                                    "question": "In which state of India, the first Paleolithic site was discovered?",
+                                    "type": "short_answers",
+                                    "Answers": "In which state of India, the first Paleolithic site was discovered?"
+                                },
+                                {
+                                    "marks": 2,
+                                    "question": "In which state of India, the first Paleolithic site was discovered?",
+                                    "type": "short_answers",
+                                    "Answers": "In which state of India, the first Paleolithic site was discovered?"
+                                },
+                                {
+                                    "marks": 2,
+                                    "question": "The famous Konark Sun temple was built by whom?",
+                                    "type": "mcq",
+                                    "Answers": [
+                                        "Narshimhadeva I",
+                                        "Angabhima deva I",
+                                        "Konkanivarman",
+                                        "Narsimhavarman II"
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

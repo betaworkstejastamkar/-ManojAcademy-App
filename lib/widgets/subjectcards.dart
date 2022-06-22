@@ -34,11 +34,13 @@ Widget subjectcards(
         child: Stack(
           alignment: AlignmentDirectional.bottomStart,
           children: [
-            SvgPicture.asset(
-              imageurl,
-              fit: BoxFit.fill,
+            SizedBox(
               width: width,
               height: hegiht,
+              child: SvgPicture.asset(
+                imageurl,
+                fit: BoxFit.fill,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
