@@ -1,0 +1,44 @@
+{
+    "Notification": [
+        {
+            "date": "23rd March,2022",
+            "Data": [
+                {
+                    "text": "new New English subject video are avaliable",
+                    "time": "10:12",
+                    "status": true
+                },
+                {
+                    "text": "mike You have successfully completed history subject you can download the certificate.",
+                    "time": "17:20",
+                    "status": true
+                }
+            ]
+        },
+        {
+            "date": "22nd March,2022 ",
+            "Data": [
+                {
+                    "text": "New English subject video are avaliable",
+                    "time": "10:14",
+                    "status": true
+                },
+                {
+                    "text": "You have successfully completed history subject you can download the certificate.",
+                    "time": "14:12",
+                    "status": false
+                }
+            ]
+        },
+        {
+            "date": "220nd March,2022 ",
+            "Data": [
+                {
+                    "text": "New English subject video are avaliable",
+                    "time": "10:12",
+                    "status": false
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "lectureData": [
+        {
+            "image": "assets/bluebox.png",
+            "name": "Maths",
+            "chapter": 16,
+            "totalvideo": 100,
+            "status": "On chapter 2",
+            "completed": 20
+        },
+        {
+            "image": "assets/greenbox.png",
+            "name": "English",
+            "chapter": 12,
+            "totalvideo": 90,
+            "status": "On chapter 2",
+            "completed": 0
+        },
+        {
+            "image": "assets/greybox.png",
+            "name": "History",
+            "chapter": 14,
+            "totalvideo": 120,
+            "status": "On chapter 2",
+            "completed": 50
+        }
+    ]
+}
