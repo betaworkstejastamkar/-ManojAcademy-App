@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:manojacademy/api/getlivelecture.dart';
 
-List certificateData = [
-  {'subjectname': 'History', 'completed': true},
-  {'subjectname': 'English', 'completed': true},
-  {'subjectname': 'Science', 'completed': false},
-  {'subjectname': 'Maths', 'completed': false},
-];
+List certificateData = [];
 
 class DownloadCertificatePage extends StatefulWidget {
   const DownloadCertificatePage({Key? key}) : super(key: key);
@@ -19,138 +15,171 @@ class DownloadCertificatePage extends StatefulWidget {
 class _DownloadCertificatePageState extends State<DownloadCertificatePage> {
   List<dynamic> completedCertificate = [];
   List<dynamic> notcompletedCertificate = [];
+  dynamic apiCall;
   @override
   void initState() {
-    for (var i = 0; i < certificateData.length; i++) {
-      if (certificateData[i]['completed']) {
-        completedCertificate.insert(0, certificateData[i]);
-      } else {
-        notcompletedCertificate.insert(0, certificateData[i]);
-      }
-    }
+    apiCall = getCertificates();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 100,
-        elevation: 1,
-        leading: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: SvgPicture.asset('icons/arrow-left.svg'),
-            style: ButtonStyle(
-                elevation: MaterialStateProperty.all(0),
-                backgroundColor: MaterialStateProperty.all(Colors.white)),
-          ),
-        ),
-        title: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SvgPicture.asset('icons/award.svg'),
-              const SizedBox(
-                width: 5,
-              ),
-              const Text('Accompliment'),
-            ],
-          ),
-        ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        // centerTitle: true,
-      ),
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: SingleChildScrollView(
-          physics: const ScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Text(
-                  'Congratulations !',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                child: Text(
-                  'You Can Downlad your certificate now',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400),
-                ),
-              ),
-              GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: completedCertificate.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 1 / 1.15,
-                    crossAxisCount: width < 440 ? 2 : 3,
+    return FutureBuilder(
+      future: apiCall,
+      builder: (context, snapshot) {
+        if (snapshot.hasData && snapshot.data != null) {
+          certificateData = snapshot.data as List<dynamic>;
+
+          for (var i = 0; i < certificateData.length; i++) {
+            if (certificateData[0][i]['completed']) {
+              completedCertificate.insert(0, certificateData[0][i]);
+            } else {
+              notcompletedCertificate.insert(0, certificateData[0][i]);
+            }
+          }
+          if (notcompletedCertificate.isNotEmpty &&
+              completedCertificate.isNotEmpty) {
+            return Scaffold(
+              appBar: AppBar(
+                toolbarHeight: 100,
+                elevation: 1,
+                leading: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: SvgPicture.asset('icons/arrow-left.svg'),
+                    style: ButtonStyle(
+                        elevation: MaterialStateProperty.all(0),
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.white)),
                   ),
-                  itemBuilder: (context, index) {
-                    return ceritifcateCard(
-                        name: completedCertificate[index]['subjectname'],
-                        lock: completedCertificate[index]['completed']);
-                  }),
-              const SizedBox(
-                height: 10,
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Text(
-                  'Pending Certificate',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500),
                 ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                child: Text(
-                  'After the course completion you can unlock the certificate',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400),
-                ),
-              ),
-              GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: notcompletedCertificate.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 1 / 1.15,
-                    crossAxisCount: width < 440 ? 2 : 3,
+                title: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SvgPicture.asset('icons/award.svg'),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      const Text('Accompliment'),
+                    ],
                   ),
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: ceritifcateCard(
-                          name: notcompletedCertificate[index]['subjectname'],
-                          lock: notcompletedCertificate[index]['completed']),
-                    );
-                  }),
-            ],
-          ),
-        ),
-      ),
+                ),
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.black,
+                // centerTitle: true,
+              ),
+              backgroundColor: Colors.white,
+              body: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: SingleChildScrollView(
+                  physics: const ScrollPhysics(),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        child: Text(
+                          'Congratulations !',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                      const Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                        child: Text(
+                          'You Can Downlad your certificate now',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ),
+                      GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: completedCertificate.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            childAspectRatio: 1 / 1.15,
+                            crossAxisCount: width < 440 ? 2 : 3,
+                          ),
+                          itemBuilder: (context, index) {
+                            return ceritifcateCard(
+                                name: completedCertificate[index]
+                                    ['subjectname'],
+                                lock: completedCertificate[index]['completed']);
+                          }),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        child: Text(
+                          'Pending Certificate',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                      const Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                        child: Text(
+                          'After the course completion you can unlock the certificate',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ),
+                      GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: notcompletedCertificate.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            childAspectRatio: 1 / 1.15,
+                            crossAxisCount: width < 440 ? 2 : 3,
+                          ),
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5),
+                              child: ceritifcateCard(
+                                  name: notcompletedCertificate[index]
+                                      ['subjectname'],
+                                  lock: notcompletedCertificate[index]
+                                      ['completed']),
+                            );
+                          }),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error}');
+        }
+
+        // By default, show a loading spinner.
+        return Center(
+            child: CircularProgressIndicator(
+          color: Theme.of(context).primaryColor,
+        ));
+      },
     );
   }
 }

@@ -212,52 +212,55 @@ class _LiveTestPageState extends State<LiveTestPage> {
         // centerTitle: true,
       ),
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'chap ${widget.chapNo} - ${widget.chapterName}',
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                '${testData.length} question | 30 minutes',
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16),
-              ),
-              const Divider(
-                thickness: 1,
-                color: Color.fromRGBO(165, 153, 153, 1),
-              ),
-              ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: testData.length,
-                itemBuilder: (context, index) {
-                  if (testData[index]['type'] == 'mcq') {
-                    return McqCards(
-                        index: index + 1,
-                        // context: context,
-                        question: testData[index]['question'],
-                        marks: testData[index]['marks'],
-                        answers: testData[index]['Answers']);
-                  } else {
-                    return ShortAnsCard(
-                        index: index + 1,
-                        question: testData[index]['question'],
-                        marks: testData[index]['marks']);
-                  }
-                },
-              ),
-            ],
+      body: WillPopScope(
+        onWillPop: () async => false,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'chap ${widget.chapNo} - ${widget.chapterName}',
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  '${testData.length} question | 30 minutes',
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16),
+                ),
+                const Divider(
+                  thickness: 1,
+                  color: Color.fromRGBO(165, 153, 153, 1),
+                ),
+                ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: testData.length,
+                  itemBuilder: (context, index) {
+                    if (testData[index]['type'] == 'mcq') {
+                      return McqCards(
+                          index: index + 1,
+                          // context: context,
+                          question: testData[index]['question'],
+                          marks: testData[index]['marks'],
+                          answers: testData[index]['Answers']);
+                    } else {
+                      return ShortAnsCard(
+                          index: index + 1,
+                          question: testData[index]['question'],
+                          marks: testData[index]['marks']);
+                    }
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),

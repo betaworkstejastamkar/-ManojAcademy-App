@@ -1,50 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:manojacademy/api/getuserdata.dart';
 
-List notificationData = [
-  {
-    'date': '23rd March,2022',
-    'Data': [
-      {
-        'text': 'new New English subject video are avaliable',
-        'time': '10:12',
-        'status': true
-      },
-      {
-        'text':
-            'mike You have successfully completed history subject you can download the certificate.',
-        'time': '17:20',
-        'status': true
-      },
-    ]
-  },
-  {
-    'date': '22nd March,2022 ',
-    'Data': [
-      {
-        'text': 'New English subject video are avaliable',
-        'time': '10:14',
-        'status': true
-      },
-      {
-        'text':
-            'You have successfully completed history subject you can download the certificate.',
-        'time': '14:12',
-        'status': false
-      },
-    ]
-  },
-  {
-    'date': '220nd March,2022 ',
-    'Data': [
-      {
-        'text': 'New English subject video are avaliable',
-        'time': '10:12',
-        'status': false
-      },
-    ]
-  }
-];
+List notificationData = [];
 
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({Key? key}) : super(key: key);
@@ -54,53 +12,78 @@ class NotificationScreen extends StatefulWidget {
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
+  dynamic apiCall;
+
+  @override
+  void initState() {
+    apiCall = getNotification();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 100,
-        leading: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: SvgPicture.asset('icons/arrow-left.svg'),
-            style: ButtonStyle(
-                elevation: MaterialStateProperty.all(0),
-                backgroundColor: MaterialStateProperty.all(Colors.white)),
-          ),
-        ),
-        elevation: 1,
-        title: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-          child: Row(
-            children: [
-              SvgPicture.asset('icons/bell.svg'),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8),
-                child: Text('Notification'),
+    return FutureBuilder(
+      future: apiCall,
+      builder: (context, snapshot) {
+        if (snapshot.hasData && snapshot.data != null) {
+          notificationData = snapshot.data as List<dynamic>;
+
+          return Scaffold(
+            appBar: AppBar(
+              toolbarHeight: 100,
+              leading: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: SvgPicture.asset('icons/arrow-left.svg'),
+                  style: ButtonStyle(
+                      elevation: MaterialStateProperty.all(0),
+                      backgroundColor: MaterialStateProperty.all(Colors.white)),
+                ),
               ),
-            ],
-          ),
-        ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        // centerTitle: true,
-      ),
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: ListView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: notificationData.length,
-          itemBuilder: (context, index) {
-            return notificateDate(
-                data: notificationData[index]['Data'],
-                date: notificationData[index]['date']);
-          },
-        ),
-      ),
+              elevation: 1,
+              title: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+                child: Row(
+                  children: [
+                    SvgPicture.asset('icons/bell.svg'),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8),
+                      child: Text('Notification'),
+                    ),
+                  ],
+                ),
+              ),
+              backgroundColor: Colors.white,
+              foregroundColor: Colors.black,
+              // centerTitle: true,
+            ),
+            backgroundColor: Colors.white,
+            body: SingleChildScrollView(
+              child: ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: notificationData[0].length,
+                itemBuilder: (context, index) {
+                  return notificateDate(
+                      data: notificationData[0][index]['Data'],
+                      date: notificationData[0][index]['date']);
+                },
+              ),
+            ),
+          );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error}');
+        }
+
+        // By default, show a loading spinner.
+        return Center(
+            child: CircularProgressIndicator(
+          color: Theme.of(context).primaryColor,
+        ));
+      },
     );
   }
 }

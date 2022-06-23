@@ -1,7 +1,6 @@
 import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:manojacademy/screens/navbarScreens/home.dart';
 
 class CarouselWindow extends StatefulWidget {
   final List data;
